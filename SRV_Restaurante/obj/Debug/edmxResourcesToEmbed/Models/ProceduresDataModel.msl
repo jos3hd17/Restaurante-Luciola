@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProceduresModelsStoreContainer" CdmEntityContainer="ProceduresEntities">
+    <FunctionImportMapping FunctionImportName="ActualizarCliente" FunctionName="ProceduresModels.Store.ActualizarCliente" />
+    <FunctionImportMapping FunctionImportName="ActualizarEspecial" FunctionName="ProceduresModels.Store.ActualizarEspecial" />
+    <FunctionImportMapping FunctionImportName="ActualizarEstadoPedidoXIdPedido" FunctionName="ProceduresModels.Store.ActualizarEstadoPedidoXIdPedido" />
+    <FunctionImportMapping FunctionImportName="ActualizarPedidoDetalle" FunctionName="ProceduresModels.Store.ActualizarPedidoDetalle" />
+    <FunctionImportMapping FunctionImportName="ActualizarProducto" FunctionName="ProceduresModels.Store.ActualizarProducto" />
+    <FunctionImportMapping FunctionImportName="ConsultarAreas" FunctionName="ProceduresModels.Store.ConsultarAreas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarAreas_Result">
+          <ScalarProperty Name="idArea" ColumnName="idArea" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarCliente" FunctionName="ProceduresModels.Store.ConsultarCliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarCliente_Result">
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="nota" ColumnName="nota" />
+          <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarEspecial" FunctionName="ProceduresModels.Store.ConsultarEspecial">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarEspecial_Result">
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarEspecialby" FunctionName="ProceduresModels.Store.ConsultarEspecialby">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarEspecialby_Result">
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarGuardarEspecial" FunctionName="ProceduresModels.Store.ConsultarGuardarEspecial">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarGuardarEspecial_Result">
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarMesas" FunctionName="ProceduresModels.Store.ConsultarMesas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarMesas_Result">
+          <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+          <ScalarProperty Name="mesa" ColumnName="mesa" />
+          <ScalarProperty Name="idArea" ColumnName="idArea" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarMovimiento" FunctionName="ProceduresModels.Store.ConsultarMovimiento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarMovimiento_Result">
+          <ScalarProperty Name="idInventario" ColumnName="idInventario" />
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+          <ScalarProperty Name="movimiento" ColumnName="movimiento" />
+          <ScalarProperty Name="cant" ColumnName="cant" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarPedidoDetalleXidPedido" FunctionName="ProceduresModels.Store.ConsultarPedidoDetalleXidPedido">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarPedidoDetalleXidPedido_Result">
+          <ScalarProperty Name="idPedidoDetalle" ColumnName="idPedidoDetalle" />
+          <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarPedidoDetalleXPedidoEstado" FunctionName="ProceduresModels.Store.ConsultarPedidoDetalleXPedidoEstado" />
+    <FunctionImportMapping FunctionImportName="ConsultarPedidoXClienteEstado" FunctionName="ProceduresModels.Store.ConsultarPedidoXClienteEstado" />
+    <FunctionImportMapping FunctionImportName="ConsultarPlato" FunctionName="ProceduresModels.Store.ConsultarPlato">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarPlato_Result">
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+          <ScalarProperty Name="idProdcuto" ColumnName="idProdcuto" />
+          <ScalarProperty Name="producto" ColumnName="producto" />
+          <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+          <ScalarProperty Name="precio1" ColumnName="precio1" />
+          <ScalarProperty Name="idCategoria1" ColumnName="idCategoria1" />
+          <ScalarProperty Name="idRestaurante1" ColumnName="idRestaurante1" />
+          <ScalarProperty Name="activo1" ColumnName="activo1" />
+          <ScalarProperty Name="preparadoEn1" ColumnName="preparadoEn1" />
+          <ScalarProperty Name="stokMinimo" ColumnName="stokMinimo" />
+          <ScalarProperty Name="idPlato" ColumnName="idPlato" />
+          <ScalarProperty Name="idProdcuto1" ColumnName="idProdcuto1" />
+          <ScalarProperty Name="idMenu1" ColumnName="idMenu1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarPrecioPedidoTemporal" FunctionName="ProceduresModels.Store.ConsultarPrecioPedidoTemporal" />
+    <FunctionImportMapping FunctionImportName="ConsultarProducto" FunctionName="ProceduresModels.Store.ConsultarProducto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarProducto_Result">
+          <ScalarProperty Name="idProdcuto" ColumnName="idProdcuto" />
+          <ScalarProperty Name="producto" ColumnName="producto" />
+          <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+          <ScalarProperty Name="stokMinimo" ColumnName="stokMinimo" />
+          <ScalarProperty Name="idUnidadMedida1" ColumnName="idUnidadMedida1" />
+          <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+          <ScalarProperty Name="idRestaurante1" ColumnName="idRestaurante1" />
+          <ScalarProperty Name="idCategoriaProducto" ColumnName="idCategoriaProducto" />
+          <ScalarProperty Name="categoriaProducto" ColumnName="categoriaProducto" />
+          <ScalarProperty Name="idRestaurante2" ColumnName="idRestaurante2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Consultarstock" FunctionName="ProceduresModels.Store.Consultarstock" />
+    <FunctionImportMapping FunctionImportName="ConsultarUltimoMovimiento" FunctionName="ProceduresModels.Store.ConsultarUltimoMovimiento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarUltimoMovimiento_Result">
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarUMedida" FunctionName="ProceduresModels.Store.ConsultarUMedida">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarUMedida_Result">
+          <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+          <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+          <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarVariacionesXidPedidoDetalle" FunctionName="ProceduresModels.Store.ConsultarVariacionesXidPedidoDetalle">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.ConsultarVariacionesXidPedidoDetalle_Result">
+          <ScalarProperty Name="variacion" ColumnName="variacion" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Crear_Usuario" FunctionName="ProceduresModels.Store.Crear_Usuario" />
+    <FunctionImportMapping FunctionImportName="DeletePedidosTemp" FunctionName="ProceduresModels.Store.DeletePedidosTemp" />
+    <FunctionImportMapping FunctionImportName="EliminarPlato" FunctionName="ProceduresModels.Store.EliminarPlato" />
+    <FunctionImportMapping FunctionImportName="GuardarArea" FunctionName="ProceduresModels.Store.GuardarArea" />
+    <FunctionImportMapping FunctionImportName="GuardarCliente" FunctionName="ProceduresModels.Store.GuardarCliente" />
+    <FunctionImportMapping FunctionImportName="GuardarEgreso" FunctionName="ProceduresModels.Store.GuardarEgreso" />
+    <FunctionImportMapping FunctionImportName="GuardarGasto" FunctionName="ProceduresModels.Store.GuardarGasto" />
+    <FunctionImportMapping FunctionImportName="GuardarIngrediente" FunctionName="ProceduresModels.Store.GuardarIngrediente" />
+    <FunctionImportMapping FunctionImportName="GuardarMesa" FunctionName="ProceduresModels.Store.GuardarMesa" />
+    <FunctionImportMapping FunctionImportName="GuardarMovimiento" FunctionName="ProceduresModels.Store.GuardarMovimiento" />
+    <FunctionImportMapping FunctionImportName="GuardarPedido" FunctionName="ProceduresModels.Store.GuardarPedido" />
+    <FunctionImportMapping FunctionImportName="GuardarPedidoDetalle" FunctionName="ProceduresModels.Store.GuardarPedidoDetalle" />
+    <FunctionImportMapping FunctionImportName="GuardarPedidosTemp" FunctionName="ProceduresModels.Store.GuardarPedidosTemp" />
+    <FunctionImportMapping FunctionImportName="GuardarPlato" FunctionName="ProceduresModels.Store.GuardarPlato" />
+    <FunctionImportMapping FunctionImportName="GuardarUMedida" FunctionName="ProceduresModels.Store.GuardarUMedida" />
+    <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="ProceduresModels.Store.RegistrarProducto" />
+    <FunctionImportMapping FunctionImportName="Valida_ingreso" FunctionName="ProceduresModels.Store.Valida_ingreso">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProceduresModels.Valida_ingreso_Result">
+          <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+          <ScalarProperty Name="restaurante" ColumnName="restaurante" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

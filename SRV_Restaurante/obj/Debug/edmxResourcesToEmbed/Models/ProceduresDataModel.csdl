@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProceduresModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProceduresEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="ActualizarCliente">
+      <Parameter Name="idCliente" Mode="In" Type="Int32" />
+      <Parameter Name="p_cliente" Mode="In" Type="String" />
+      <Parameter Name="p_direccion" Mode="In" Type="String" />
+      <Parameter Name="p_telefono" Mode="In" Type="String" />
+      <Parameter Name="p_celular" Mode="In" Type="String" />
+      <Parameter Name="p_nota" Mode="In" Type="String" />
+      <Parameter Name="p_tipoDocumento" Mode="In" Type="String" />
+      <Parameter Name="p_documento" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizarEspecial">
+      <Parameter Name="p_idCategoria" Mode="In" Type="Int32" />
+      <Parameter Name="p_idMenu" Mode="In" Type="Int32" />
+      <Parameter Name="p_nombre" Mode="In" Type="String" />
+      <Parameter Name="p_precio" Mode="In" Type="Int32" />
+      <Parameter Name="p_preparadoEn" Mode="In" Type="String" />
+      <Parameter Name="p_Activo" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizarEstadoPedidoXIdPedido">
+      <Parameter Name="idpedido" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizarPedidoDetalle">
+      <Parameter Name="idPedidoDetalle" Mode="In" Type="Int32" />
+      <Parameter Name="idProducto" Mode="In" Type="Int32" />
+      <Parameter Name="idMenu" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizarProducto">
+      <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+      <Parameter Name="p_activo" Mode="In" Type="Boolean" />
+      <Parameter Name="p_producto" Mode="In" Type="String" />
+      <Parameter Name="p_idUnidadMedida" Mode="In" Type="Int32" />
+      <Parameter Name="p_precio" Mode="In" Type="Int32" />
+      <Parameter Name="p_idCategoria" Mode="In" Type="Int32" />
+      <Parameter Name="p_stockMin" Mode="In" Type="Int32" />
+      <Parameter Name="p_preparadoEn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarAreas" ReturnType="Collection(ProceduresModels.ConsultarAreas_Result)">
+      <Parameter Name="p_idrestaurante" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarCliente" ReturnType="Collection(ProceduresModels.ConsultarCliente_Result)">
+      <Parameter Name="p_mode" Mode="In" Type="String" />
+      <Parameter Name="p_telefono" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarEspecial" ReturnType="Collection(ProceduresModels.ConsultarEspecial_Result)">
+      <Parameter Name="p_mode" Mode="In" Type="Int32" />
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_nombre" Mode="In" Type="String" />
+      <Parameter Name="p_precio" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarEspecialby" ReturnType="Collection(ProceduresModels.ConsultarEspecialby_Result)">
+      <Parameter Name="p_mode" Mode="In" Type="Int32" />
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+      <Parameter Name="p_nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarGuardarEspecial" ReturnType="Collection(ProceduresModels.ConsultarGuardarEspecial_Result)">
+      <Parameter Name="p_idcategoría" Mode="In" Type="Int32" />
+      <Parameter Name="p_nombre" Mode="In" Type="String" />
+      <Parameter Name="p_precio" Mode="In" Type="Int32" />
+      <Parameter Name="p_preparadoEn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarMesas" ReturnType="Collection(ProceduresModels.ConsultarMesas_Result)">
+      <Parameter Name="p_idarea" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarMovimiento" ReturnType="Collection(ProceduresModels.ConsultarMovimiento_Result)">
+      <Parameter Name="p_mode" Mode="In" Type="String" />
+      <Parameter Name="p_mes" Mode="In" Type="Int32" />
+      <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+      <Parameter Name="p_movimiento" Mode="In" Type="String" />
+      <Parameter Name="p_fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="p_fechaFin" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarPedidoDetalleXidPedido" ReturnType="Collection(ProceduresModels.ConsultarPedidoDetalleXidPedido_Result)">
+      <Parameter Name="idPedido" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarPedidoDetalleXPedidoEstado" ReturnType="Collection(Int32)">
+      <Parameter Name="idPedido" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarPedidoXClienteEstado" ReturnType="Collection(Int32)">
+      <Parameter Name="idCliente" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarPlato" ReturnType="Collection(ProceduresModels.ConsultarPlato_Result)">
+      <Parameter Name="p_nombreEspecial" Mode="In" Type="String" />
+      <Parameter Name="p_idEspecial" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarPrecioPedidoTemporal" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="ConsultarProducto" ReturnType="Collection(ProceduresModels.ConsultarProducto_Result)">
+      <Parameter Name="p_nombreProducto" Mode="In" Type="String" />
+      <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Consultarstock" ReturnType="Collection(Int32)">
+      <Parameter Name="p_opcion" Mode="In" Type="Int16" />
+      <Parameter Name="p_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarUltimoMovimiento" ReturnType="Collection(ProceduresModels.ConsultarUltimoMovimiento_Result)">
+      <Parameter Name="p_opcion" Mode="In" Type="Int16" />
+      <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarUMedida" ReturnType="Collection(ProceduresModels.ConsultarUMedida_Result)">
+      <Parameter Name="p_mode" Mode="In" Type="Int32" />
+      <Parameter Name="p_idUMedida" Mode="In" Type="Int32" />
+      <Parameter Name="p_UnidadMedida" Mode="In" Type="String" />
+      <Parameter Name="p_idRestaurante" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarVariacionesXidPedidoDetalle" ReturnType="Collection(ProceduresModels.ConsultarVariacionesXidPedidoDetalle_Result)">
+      <Parameter Name="idPedidodetalle" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Usuario">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="activo" Mode="In" Type="String" />
+      <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+      <Parameter Name="idRestaurante" Mode="In" Type="Int32" />
+      <Parameter Name="admin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeletePedidosTemp">
+      <Parameter Name="producto" Mode="In" Type="String" />
+      <Parameter Name="precio" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EliminarPlato">
+      <Parameter Name="p_idPlato" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarArea">
+      <Parameter Name="area" Mode="In" Type="String" />
+      <Parameter Name="idRestaurante" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarCliente" ReturnType="Collection(Int32)">
+      <Parameter Name="p_cliente" Mode="In" Type="String" />
+      <Parameter Name="p_direccion" Mode="In" Type="String" />
+      <Parameter Name="p_telefono" Mode="In" Type="String" />
+      <Parameter Name="p_celular" Mode="In" Type="String" />
+      <Parameter Name="p_nota" Mode="In" Type="String" />
+      <Parameter Name="p_tipoDocumento" Mode="In" Type="String" />
+      <Parameter Name="p_documento" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarEgreso">
+      <Parameter Name="ciudad" Mode="In" Type="String" />
+      <Parameter Name="remitente" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="concepto" Mode="In" Type="String" />
+      <Parameter Name="direccion" Mode="In" Type="String" />
+      <Parameter Name="responsable" Mode="In" Type="String" />
+      <Parameter Name="formaPago" Mode="In" Type="String" />
+      <Parameter Name="cedula" Mode="In" Type="String" />
+      <Parameter Name="valor" Mode="In" Type="String" />
+      <Parameter Name="fechaEgreso" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarGasto">
+      <Parameter Name="idRestaurante" Mode="In" Type="Int32" />
+      <Parameter Name="fechaGasto" Mode="In" Type="String" />
+      <Parameter Name="responsable" Mode="In" Type="String" />
+      <Parameter Name="remitente" Mode="In" Type="String" />
+      <Parameter Name="nombreRemitente" Mode="In" Type="String" />
+      <Parameter Name="cedulaRemitente" Mode="In" Type="String" />
+      <Parameter Name="valorGasto" Mode="In" Type="Int64" />
+      <Parameter Name="descripcionGasto" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="ciudad" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarIngrediente">
+      <Parameter Name="p_ingrediente" Mode="In" Type="String" />
+      <Parameter Name="p_idUnidadMedida" Mode="In" Type="Int32" />
+      <Parameter Name="p_precio" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarMesa">
+      <Parameter Name="mesa" Mode="In" Type="String" />
+      <Parameter Name="idArea" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarMovimiento">
+      <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+      <Parameter Name="idMenu" Mode="In" Type="Int32" />
+      <Parameter Name="p_movimiento" Mode="In" Type="String" />
+      <Parameter Name="p_cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="p_fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="p_precio" Mode="In" Type="Int64" />
+      <Parameter Name="p_observaciones" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarPedido" ReturnType="Collection(Int32)">
+      <Parameter Name="idCliente" Mode="In" Type="Int32" />
+      <Parameter Name="pedido" Mode="In" Type="String" />
+      <Parameter Name="idMesa" Mode="In" Type="Int32" />
+      <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarPedidoDetalle" ReturnType="Collection(Int32)">
+      <Parameter Name="idPedido" Mode="In" Type="Int32" />
+      <Parameter Name="idProducto" Mode="In" Type="Int32" />
+      <Parameter Name="idMenu" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarPedidosTemp">
+      <Parameter Name="producto" Mode="In" Type="String" />
+      <Parameter Name="precio" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarPlato">
+      <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+      <Parameter Name="p_idMenu" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GuardarUMedida">
+      <Parameter Name="p_UnidadMedida" Mode="In" Type="String" />
+      <Parameter Name="p_idRestaurante" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarProducto">
+      <Parameter Name="p_producto" Mode="In" Type="String" />
+      <Parameter Name="p_idUnidadMedida" Mode="In" Type="Int32" />
+      <Parameter Name="p_precio" Mode="In" Type="Int32" />
+      <Parameter Name="p_idCategoria" Mode="In" Type="Int32" />
+      <Parameter Name="p_idRestaurante" Mode="In" Type="Int32" />
+      <Parameter Name="p_stockMin" Mode="In" Type="Int32" />
+      <Parameter Name="p_preparadoEn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Valida_ingreso" ReturnType="Collection(ProceduresModels.Valida_ingreso_Result)">
+      <Parameter Name="nombre_usuario" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ConsultarAreas_Result">
+    <Property Type="Int32" Name="idArea" Nullable="false" />
+    <Property Type="String" Name="area" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarCliente_Result">
+    <Property Type="Int32" Name="idCliente" Nullable="false" />
+    <Property Type="String" Name="cliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="celular" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="nota" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="tipoDocumento" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="documento" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="ConsultarEspecial_Result">
+    <Property Type="Int32" Name="idMenu" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="precio" Nullable="true" />
+    <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+    <Property Type="Boolean" Name="activo" Nullable="true" />
+    <Property Type="Int32" Name="idCategoria" Nullable="true" />
+    <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarEspecialby_Result">
+    <Property Type="Int32" Name="idMenu" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="precio" Nullable="true" />
+    <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+    <Property Type="Boolean" Name="activo" Nullable="true" />
+    <Property Type="Int32" Name="idCategoria" Nullable="true" />
+    <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarGuardarEspecial_Result">
+    <Property Type="Int32" Name="idMenu" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="precio" Nullable="true" />
+    <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+    <Property Type="Boolean" Name="activo" Nullable="true" />
+    <Property Type="Int32" Name="idCategoria" Nullable="true" />
+    <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarMesas_Result">
+    <Property Type="Int32" Name="idMesa" Nullable="false" />
+    <Property Type="String" Name="mesa" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="idArea" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarMovimiento_Result">
+    <Property Type="Int32" Name="idInventario" Nullable="false" />
+    <Property Type="Int32" Name="idProducto" Nullable="true" />
+    <Property Type="Int32" Name="idMenu" Nullable="true" />
+    <Property Type="String" Name="movimiento" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="cant" Nullable="true" />
+    <Property Type="DateTime" Name="fecha" Nullable="true" Precision="23" />
+    <Property Type="String" Name="observacion" Nullable="true" MaxLength="500" />
+    <Property Type="Int64" Name="precio" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarPedidoDetalleXidPedido_Result">
+    <Property Type="Int32" Name="idPedidoDetalle" Nullable="false" />
+    <Property Type="Int32" Name="idPedido" Nullable="true" />
+    <Property Type="Int32" Name="idProducto" Nullable="true" />
+    <Property Type="Int32" Name="idMenu" Nullable="true" />
+    <Property Type="Int32" Name="estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarPlato_Result">
+    <Property Type="Int32" Name="idMenu" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="precio" Nullable="true" />
+    <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+    <Property Type="Boolean" Name="activo" Nullable="true" />
+    <Property Type="Int32" Name="idCategoria" Nullable="true" />
+    <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+    <Property Type="Int32" Name="idProdcuto" Nullable="false" />
+    <Property Type="String" Name="producto" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="idUnidadMedida" Nullable="true" />
+    <Property Type="Int32" Name="precio1" Nullable="true" />
+    <Property Type="Int32" Name="idCategoria1" Nullable="true" />
+    <Property Type="Int32" Name="idRestaurante1" Nullable="true" />
+    <Property Type="Boolean" Name="activo1" Nullable="true" />
+    <Property Type="String" Name="preparadoEn1" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="stokMinimo" Nullable="true" />
+    <Property Type="Int32" Name="idPlato" Nullable="false" />
+    <Property Type="Int32" Name="idProdcuto1" Nullable="true" />
+    <Property Type="Int32" Name="idMenu1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarProducto_Result">
+    <Property Type="Int32" Name="idProdcuto" Nullable="false" />
+    <Property Type="String" Name="producto" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="idUnidadMedida" Nullable="true" />
+    <Property Type="Int32" Name="precio" Nullable="true" />
+    <Property Type="Int32" Name="idCategoria" Nullable="true" />
+    <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+    <Property Type="Boolean" Name="activo" Nullable="true" />
+    <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="stokMinimo" Nullable="true" />
+    <Property Type="Int32" Name="idUnidadMedida1" Nullable="false" />
+    <Property Type="String" Name="unidadMedida" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="idRestaurante1" Nullable="true" />
+    <Property Type="Int32" Name="idCategoriaProducto" Nullable="false" />
+    <Property Type="String" Name="categoriaProducto" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="idRestaurante2" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarUltimoMovimiento_Result">
+    <Property Type="Int64" Name="precio" Nullable="true" />
+    <Property Type="String" Name="observacion" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="unidadMedida" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="ConsultarUMedida_Result">
+    <Property Type="Int32" Name="idUnidadMedida" Nullable="false" />
+    <Property Type="String" Name="unidadMedida" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarVariacionesXidPedidoDetalle_Result">
+    <Property Type="String" Name="variacion" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="precio" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Valida_ingreso_Result">
+    <Property Type="Int32" Name="id_perfil" Nullable="true" />
+    <Property Type="String" Name="idUsuario" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="password" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+    <Property Type="String" Name="restaurante" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="direccion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="observacion" Nullable="true" MaxLength="500" />
+    <Property Type="Decimal" Name="iva" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+</Schema>

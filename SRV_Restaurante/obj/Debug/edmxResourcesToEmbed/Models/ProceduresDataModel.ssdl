@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProceduresModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCliente" Type="int" Mode="In" />
+    <Parameter Name="p_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="p_direccion" Type="varchar" Mode="In" />
+    <Parameter Name="p_telefono" Type="varchar" Mode="In" />
+    <Parameter Name="p_celular" Type="varchar" Mode="In" />
+    <Parameter Name="p_nota" Type="varchar" Mode="In" />
+    <Parameter Name="p_tipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="p_documento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ActualizarEspecial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_idCategoria" Type="int" Mode="In" />
+    <Parameter Name="p_idMenu" Type="int" Mode="In" />
+    <Parameter Name="p_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="p_precio" Type="int" Mode="In" />
+    <Parameter Name="p_preparadoEn" Type="varchar" Mode="In" />
+    <Parameter Name="p_Activo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="ActualizarEstadoPedidoXIdPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idpedido" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ActualizarPedidoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPedidoDetalle" Type="int" Mode="In" />
+    <Parameter Name="idProducto" Type="int" Mode="In" />
+    <Parameter Name="idMenu" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ActualizarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_idProducto" Type="int" Mode="In" />
+    <Parameter Name="p_activo" Type="bit" Mode="In" />
+    <Parameter Name="p_producto" Type="varchar" Mode="In" />
+    <Parameter Name="p_idUnidadMedida" Type="int" Mode="In" />
+    <Parameter Name="p_precio" Type="int" Mode="In" />
+    <Parameter Name="p_idCategoria" Type="int" Mode="In" />
+    <Parameter Name="p_stockMin" Type="int" Mode="In" />
+    <Parameter Name="p_preparadoEn" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultarAreas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_idrestaurante" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_mode" Type="char" Mode="In" />
+    <Parameter Name="p_telefono" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultarEspecial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_mode" Type="int" Mode="In" />
+    <Parameter Name="p_id" Type="int" Mode="In" />
+    <Parameter Name="p_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="p_precio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarEspecialby" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_mode" Type="int" Mode="In" />
+    <Parameter Name="p_id" Type="int" Mode="In" />
+    <Parameter Name="p_nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultarGuardarEspecial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_idcategoría" Type="int" Mode="In" />
+    <Parameter Name="p_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="p_precio" Type="int" Mode="In" />
+    <Parameter Name="p_preparadoEn" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultarMesas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_idarea" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_mode" Type="varchar" Mode="In" />
+    <Parameter Name="p_mes" Type="int" Mode="In" />
+    <Parameter Name="p_idProducto" Type="int" Mode="In" />
+    <Parameter Name="p_movimiento" Type="varchar" Mode="In" />
+    <Parameter Name="p_fecha" Type="datetime" Mode="In" />
+    <Parameter Name="p_fechaFin" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="ConsultarPedidoDetalleXidPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPedido" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultarPedidoDetalleXPedidoEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPedido" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultarPedidoXClienteEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCliente" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConsultarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_nombreEspecial" Type="varchar" Mode="In" />
+    <Parameter Name="p_idEspecial" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarPrecioPedidoTemporal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ConsultarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_nombreProducto" Type="varchar" Mode="In" />
+    <Parameter Name="p_idProducto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Consultarstock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_opcion" Type="smallint" Mode="In" />
+    <Parameter Name="p_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarUltimoMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_opcion" Type="smallint" Mode="In" />
+    <Parameter Name="p_idProducto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarUMedida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_mode" Type="int" Mode="In" />
+    <Parameter Name="p_idUMedida" Type="int" Mode="In" />
+    <Parameter Name="p_UnidadMedida" Type="varchar" Mode="In" />
+    <Parameter Name="p_idRestaurante" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarVariacionesXidPedidoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPedidodetalle" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Crear_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="activo" Type="varchar" Mode="In" />
+    <Parameter Name="idPerfil" Type="int" Mode="In" />
+    <Parameter Name="idRestaurante" Type="int" Mode="In" />
+    <Parameter Name="admin" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeletePedidosTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="producto" Type="varchar" Mode="In" />
+    <Parameter Name="precio" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EliminarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_idPlato" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="area" Type="varchar" Mode="In" />
+    <Parameter Name="idRestaurante" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_cliente" Type="varchar" Mode="In" />
+    <Parameter Name="p_direccion" Type="varchar" Mode="In" />
+    <Parameter Name="p_telefono" Type="varchar" Mode="In" />
+    <Parameter Name="p_celular" Type="varchar" Mode="In" />
+    <Parameter Name="p_nota" Type="varchar" Mode="In" />
+    <Parameter Name="p_tipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="p_documento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GuardarEgreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ciudad" Type="varchar" Mode="In" />
+    <Parameter Name="remitente" Type="varchar" Mode="In" />
+    <Parameter Name="telefono" Type="varchar" Mode="In" />
+    <Parameter Name="concepto" Type="varchar" Mode="In" />
+    <Parameter Name="direccion" Type="varchar" Mode="In" />
+    <Parameter Name="responsable" Type="varchar" Mode="In" />
+    <Parameter Name="formaPago" Type="varchar" Mode="In" />
+    <Parameter Name="cedula" Type="varchar" Mode="In" />
+    <Parameter Name="valor" Type="varchar" Mode="In" />
+    <Parameter Name="fechaEgreso" Type="date" Mode="In" />
+  </Function>
+  <Function Name="GuardarGasto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idRestaurante" Type="int" Mode="In" />
+    <Parameter Name="fechaGasto" Type="varchar" Mode="In" />
+    <Parameter Name="responsable" Type="varchar" Mode="In" />
+    <Parameter Name="remitente" Type="varchar" Mode="In" />
+    <Parameter Name="nombreRemitente" Type="varchar" Mode="In" />
+    <Parameter Name="cedulaRemitente" Type="varchar" Mode="In" />
+    <Parameter Name="valorGasto" Type="bigint" Mode="In" />
+    <Parameter Name="descripcionGasto" Type="varchar" Mode="In" />
+    <Parameter Name="telefono" Type="varchar" Mode="In" />
+    <Parameter Name="ciudad" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GuardarIngrediente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_ingrediente" Type="varchar" Mode="In" />
+    <Parameter Name="p_idUnidadMedida" Type="int" Mode="In" />
+    <Parameter Name="p_precio" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarMesa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mesa" Type="varchar" Mode="In" />
+    <Parameter Name="idArea" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_idProducto" Type="int" Mode="In" />
+    <Parameter Name="idMenu" Type="int" Mode="In" />
+    <Parameter Name="p_movimiento" Type="varchar" Mode="In" />
+    <Parameter Name="p_cantidad" Type="int" Mode="In" />
+    <Parameter Name="p_fecha" Type="datetime" Mode="In" />
+    <Parameter Name="p_precio" Type="bigint" Mode="In" />
+    <Parameter Name="p_observaciones" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GuardarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCliente" Type="int" Mode="In" />
+    <Parameter Name="pedido" Type="varchar" Mode="In" />
+    <Parameter Name="idMesa" Type="int" Mode="In" />
+    <Parameter Name="idUsuario" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarPedidoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idPedido" Type="int" Mode="In" />
+    <Parameter Name="idProducto" Type="int" Mode="In" />
+    <Parameter Name="idMenu" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarPedidosTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="producto" Type="varchar" Mode="In" />
+    <Parameter Name="precio" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GuardarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_idProducto" Type="int" Mode="In" />
+    <Parameter Name="p_idMenu" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GuardarUMedida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_UnidadMedida" Type="varchar" Mode="In" />
+    <Parameter Name="p_idRestaurante" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RegistrarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_producto" Type="varchar" Mode="In" />
+    <Parameter Name="p_idUnidadMedida" Type="int" Mode="In" />
+    <Parameter Name="p_precio" Type="int" Mode="In" />
+    <Parameter Name="p_idCategoria" Type="int" Mode="In" />
+    <Parameter Name="p_idRestaurante" Type="int" Mode="In" />
+    <Parameter Name="p_stockMin" Type="int" Mode="In" />
+    <Parameter Name="p_preparadoEn" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Valida_ingreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre_usuario" Type="varchar" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ProceduresModelsStoreContainer" />
+</Schema>

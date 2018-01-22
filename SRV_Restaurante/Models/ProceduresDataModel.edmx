@@ -1,0 +1,824 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProceduresModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="p_cliente" Type="varchar" Mode="In" />
+          <Parameter Name="p_direccion" Type="varchar" Mode="In" />
+          <Parameter Name="p_telefono" Type="varchar" Mode="In" />
+          <Parameter Name="p_celular" Type="varchar" Mode="In" />
+          <Parameter Name="p_nota" Type="varchar" Mode="In" />
+          <Parameter Name="p_tipoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="p_documento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ActualizarEspecial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_idCategoria" Type="int" Mode="In" />
+          <Parameter Name="p_idMenu" Type="int" Mode="In" />
+          <Parameter Name="p_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="p_precio" Type="int" Mode="In" />
+          <Parameter Name="p_preparadoEn" Type="varchar" Mode="In" />
+          <Parameter Name="p_Activo" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="ActualizarEstadoPedidoXIdPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idpedido" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarPedidoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedidoDetalle" Type="int" Mode="In" />
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+          <Parameter Name="idMenu" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_idProducto" Type="int" Mode="In" />
+          <Parameter Name="p_activo" Type="bit" Mode="In" />
+          <Parameter Name="p_producto" Type="varchar" Mode="In" />
+          <Parameter Name="p_idUnidadMedida" Type="int" Mode="In" />
+          <Parameter Name="p_precio" Type="int" Mode="In" />
+          <Parameter Name="p_idCategoria" Type="int" Mode="In" />
+          <Parameter Name="p_stockMin" Type="int" Mode="In" />
+          <Parameter Name="p_preparadoEn" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarAreas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_idrestaurante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ConsultarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_mode" Type="char" Mode="In" />
+          <Parameter Name="p_telefono" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarEspecial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_mode" Type="int" Mode="In" />
+          <Parameter Name="p_id" Type="int" Mode="In" />
+          <Parameter Name="p_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="p_precio" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ConsultarEspecialby" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_mode" Type="int" Mode="In" />
+          <Parameter Name="p_id" Type="int" Mode="In" />
+          <Parameter Name="p_nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarGuardarEspecial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_idcategoría" Type="int" Mode="In" />
+          <Parameter Name="p_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="p_precio" Type="int" Mode="In" />
+          <Parameter Name="p_preparadoEn" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarMesas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_idarea" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ConsultarMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_mode" Type="varchar" Mode="In" />
+          <Parameter Name="p_mes" Type="int" Mode="In" />
+          <Parameter Name="p_idProducto" Type="int" Mode="In" />
+          <Parameter Name="p_movimiento" Type="varchar" Mode="In" />
+          <Parameter Name="p_fecha" Type="datetime" Mode="In" />
+          <Parameter Name="p_fechaFin" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ConsultarPedidoDetalleXidPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedido" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarPedidoDetalleXPedidoEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedido" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarPedidoXClienteEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_nombreEspecial" Type="varchar" Mode="In" />
+          <Parameter Name="p_idEspecial" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ConsultarPrecioPedidoTemporal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ConsultarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_nombreProducto" Type="varchar" Mode="In" />
+          <Parameter Name="p_idProducto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Consultarstock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_opcion" Type="smallint" Mode="In" />
+          <Parameter Name="p_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ConsultarUltimoMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_opcion" Type="smallint" Mode="In" />
+          <Parameter Name="p_idProducto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ConsultarUMedida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_mode" Type="int" Mode="In" />
+          <Parameter Name="p_idUMedida" Type="int" Mode="In" />
+          <Parameter Name="p_UnidadMedida" Type="varchar" Mode="In" />
+          <Parameter Name="p_idRestaurante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ConsultarVariacionesXidPedidoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedidodetalle" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Crear_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="usuario" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="activo" Type="varchar" Mode="In" />
+          <Parameter Name="idPerfil" Type="int" Mode="In" />
+          <Parameter Name="idRestaurante" Type="int" Mode="In" />
+          <Parameter Name="admin" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeletePedidosTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="producto" Type="varchar" Mode="In" />
+          <Parameter Name="precio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="EliminarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_idPlato" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GuardarArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="idRestaurante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GuardarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_cliente" Type="varchar" Mode="In" />
+          <Parameter Name="p_direccion" Type="varchar" Mode="In" />
+          <Parameter Name="p_telefono" Type="varchar" Mode="In" />
+          <Parameter Name="p_celular" Type="varchar" Mode="In" />
+          <Parameter Name="p_nota" Type="varchar" Mode="In" />
+          <Parameter Name="p_tipoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="p_documento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GuardarEgreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ciudad" Type="varchar" Mode="In" />
+          <Parameter Name="remitente" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="varchar" Mode="In" />
+          <Parameter Name="concepto" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+          <Parameter Name="responsable" Type="varchar" Mode="In" />
+          <Parameter Name="formaPago" Type="varchar" Mode="In" />
+          <Parameter Name="cedula" Type="varchar" Mode="In" />
+          <Parameter Name="valor" Type="varchar" Mode="In" />
+          <Parameter Name="fechaEgreso" Type="date" Mode="In" />
+        </Function>
+        <Function Name="GuardarGasto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idRestaurante" Type="int" Mode="In" />
+          <Parameter Name="fechaGasto" Type="varchar" Mode="In" />
+          <Parameter Name="responsable" Type="varchar" Mode="In" />
+          <Parameter Name="remitente" Type="varchar" Mode="In" />
+          <Parameter Name="nombreRemitente" Type="varchar" Mode="In" />
+          <Parameter Name="cedulaRemitente" Type="varchar" Mode="In" />
+          <Parameter Name="valorGasto" Type="bigint" Mode="In" />
+          <Parameter Name="descripcionGasto" Type="varchar" Mode="In" />
+          <Parameter Name="telefono" Type="varchar" Mode="In" />
+          <Parameter Name="ciudad" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GuardarIngrediente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_ingrediente" Type="varchar" Mode="In" />
+          <Parameter Name="p_idUnidadMedida" Type="int" Mode="In" />
+          <Parameter Name="p_precio" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GuardarMesa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mesa" Type="varchar" Mode="In" />
+          <Parameter Name="idArea" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GuardarMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_idProducto" Type="int" Mode="In" />
+          <Parameter Name="idMenu" Type="int" Mode="In" />
+          <Parameter Name="p_movimiento" Type="varchar" Mode="In" />
+          <Parameter Name="p_cantidad" Type="int" Mode="In" />
+          <Parameter Name="p_fecha" Type="datetime" Mode="In" />
+          <Parameter Name="p_precio" Type="bigint" Mode="In" />
+          <Parameter Name="p_observaciones" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GuardarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="pedido" Type="varchar" Mode="In" />
+          <Parameter Name="idMesa" Type="int" Mode="In" />
+          <Parameter Name="idUsuario" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GuardarPedidoDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPedido" Type="int" Mode="In" />
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+          <Parameter Name="idMenu" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GuardarPedidosTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="producto" Type="varchar" Mode="In" />
+          <Parameter Name="precio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GuardarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_idProducto" Type="int" Mode="In" />
+          <Parameter Name="p_idMenu" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GuardarUMedida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_UnidadMedida" Type="varchar" Mode="In" />
+          <Parameter Name="p_idRestaurante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RegistrarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_producto" Type="varchar" Mode="In" />
+          <Parameter Name="p_idUnidadMedida" Type="int" Mode="In" />
+          <Parameter Name="p_precio" Type="int" Mode="In" />
+          <Parameter Name="p_idCategoria" Type="int" Mode="In" />
+          <Parameter Name="p_idRestaurante" Type="int" Mode="In" />
+          <Parameter Name="p_stockMin" Type="int" Mode="In" />
+          <Parameter Name="p_preparadoEn" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Valida_ingreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre_usuario" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProceduresModelsStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProceduresModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProceduresEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="ActualizarCliente">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="p_cliente" Mode="In" Type="String" />
+            <Parameter Name="p_direccion" Mode="In" Type="String" />
+            <Parameter Name="p_telefono" Mode="In" Type="String" />
+            <Parameter Name="p_celular" Mode="In" Type="String" />
+            <Parameter Name="p_nota" Mode="In" Type="String" />
+            <Parameter Name="p_tipoDocumento" Mode="In" Type="String" />
+            <Parameter Name="p_documento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarEspecial">
+            <Parameter Name="p_idCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="p_idMenu" Mode="In" Type="Int32" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_precio" Mode="In" Type="Int32" />
+            <Parameter Name="p_preparadoEn" Mode="In" Type="String" />
+            <Parameter Name="p_Activo" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarEstadoPedidoXIdPedido">
+            <Parameter Name="idpedido" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarPedidoDetalle">
+            <Parameter Name="idPedidoDetalle" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="idMenu" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarProducto">
+            <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="p_activo" Mode="In" Type="Boolean" />
+            <Parameter Name="p_producto" Mode="In" Type="String" />
+            <Parameter Name="p_idUnidadMedida" Mode="In" Type="Int32" />
+            <Parameter Name="p_precio" Mode="In" Type="Int32" />
+            <Parameter Name="p_idCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="p_stockMin" Mode="In" Type="Int32" />
+            <Parameter Name="p_preparadoEn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarAreas" ReturnType="Collection(ProceduresModels.ConsultarAreas_Result)">
+            <Parameter Name="p_idrestaurante" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarCliente" ReturnType="Collection(ProceduresModels.ConsultarCliente_Result)">
+            <Parameter Name="p_mode" Mode="In" Type="String" />
+            <Parameter Name="p_telefono" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarEspecial" ReturnType="Collection(ProceduresModels.ConsultarEspecial_Result)">
+            <Parameter Name="p_mode" Mode="In" Type="Int32" />
+            <Parameter Name="p_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_precio" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarEspecialby" ReturnType="Collection(ProceduresModels.ConsultarEspecialby_Result)">
+            <Parameter Name="p_mode" Mode="In" Type="Int32" />
+            <Parameter Name="p_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarGuardarEspecial" ReturnType="Collection(ProceduresModels.ConsultarGuardarEspecial_Result)">
+            <Parameter Name="p_idcategoría" Mode="In" Type="Int32" />
+            <Parameter Name="p_nombre" Mode="In" Type="String" />
+            <Parameter Name="p_precio" Mode="In" Type="Int32" />
+            <Parameter Name="p_preparadoEn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarMesas" ReturnType="Collection(ProceduresModels.ConsultarMesas_Result)">
+            <Parameter Name="p_idarea" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarMovimiento" ReturnType="Collection(ProceduresModels.ConsultarMovimiento_Result)">
+            <Parameter Name="p_mode" Mode="In" Type="String" />
+            <Parameter Name="p_mes" Mode="In" Type="Int32" />
+            <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="p_movimiento" Mode="In" Type="String" />
+            <Parameter Name="p_fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="p_fechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarPedidoDetalleXidPedido" ReturnType="Collection(ProceduresModels.ConsultarPedidoDetalleXidPedido_Result)">
+            <Parameter Name="idPedido" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarPedidoDetalleXPedidoEstado" ReturnType="Collection(Int32)">
+            <Parameter Name="idPedido" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarPedidoXClienteEstado" ReturnType="Collection(Int32)">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarPlato" ReturnType="Collection(ProceduresModels.ConsultarPlato_Result)">
+            <Parameter Name="p_nombreEspecial" Mode="In" Type="String" />
+            <Parameter Name="p_idEspecial" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarPrecioPedidoTemporal" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="ConsultarProducto" ReturnType="Collection(ProceduresModels.ConsultarProducto_Result)">
+            <Parameter Name="p_nombreProducto" Mode="In" Type="String" />
+            <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Consultarstock" ReturnType="Collection(Int32)">
+            <Parameter Name="p_opcion" Mode="In" Type="Int16" />
+            <Parameter Name="p_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarUltimoMovimiento" ReturnType="Collection(ProceduresModels.ConsultarUltimoMovimiento_Result)">
+            <Parameter Name="p_opcion" Mode="In" Type="Int16" />
+            <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarUMedida" ReturnType="Collection(ProceduresModels.ConsultarUMedida_Result)">
+            <Parameter Name="p_mode" Mode="In" Type="Int32" />
+            <Parameter Name="p_idUMedida" Mode="In" Type="Int32" />
+            <Parameter Name="p_UnidadMedida" Mode="In" Type="String" />
+            <Parameter Name="p_idRestaurante" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarVariacionesXidPedidoDetalle" ReturnType="Collection(ProceduresModels.ConsultarVariacionesXidPedidoDetalle_Result)">
+            <Parameter Name="idPedidodetalle" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Crear_Usuario">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="usuario" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="activo" Mode="In" Type="String" />
+            <Parameter Name="idPerfil" Mode="In" Type="Int32" />
+            <Parameter Name="idRestaurante" Mode="In" Type="Int32" />
+            <Parameter Name="admin" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeletePedidosTemp">
+            <Parameter Name="producto" Mode="In" Type="String" />
+            <Parameter Name="precio" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarPlato">
+            <Parameter Name="p_idPlato" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarArea">
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="idRestaurante" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarCliente" ReturnType="Collection(Int32)">
+            <Parameter Name="p_cliente" Mode="In" Type="String" />
+            <Parameter Name="p_direccion" Mode="In" Type="String" />
+            <Parameter Name="p_telefono" Mode="In" Type="String" />
+            <Parameter Name="p_celular" Mode="In" Type="String" />
+            <Parameter Name="p_nota" Mode="In" Type="String" />
+            <Parameter Name="p_tipoDocumento" Mode="In" Type="String" />
+            <Parameter Name="p_documento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarEgreso">
+            <Parameter Name="ciudad" Mode="In" Type="String" />
+            <Parameter Name="remitente" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="concepto" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="responsable" Mode="In" Type="String" />
+            <Parameter Name="formaPago" Mode="In" Type="String" />
+            <Parameter Name="cedula" Mode="In" Type="String" />
+            <Parameter Name="valor" Mode="In" Type="String" />
+            <Parameter Name="fechaEgreso" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarGasto">
+            <Parameter Name="idRestaurante" Mode="In" Type="Int32" />
+            <Parameter Name="fechaGasto" Mode="In" Type="String" />
+            <Parameter Name="responsable" Mode="In" Type="String" />
+            <Parameter Name="remitente" Mode="In" Type="String" />
+            <Parameter Name="nombreRemitente" Mode="In" Type="String" />
+            <Parameter Name="cedulaRemitente" Mode="In" Type="String" />
+            <Parameter Name="valorGasto" Mode="In" Type="Int64" />
+            <Parameter Name="descripcionGasto" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="ciudad" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarIngrediente">
+            <Parameter Name="p_ingrediente" Mode="In" Type="String" />
+            <Parameter Name="p_idUnidadMedida" Mode="In" Type="Int32" />
+            <Parameter Name="p_precio" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarMesa">
+            <Parameter Name="mesa" Mode="In" Type="String" />
+            <Parameter Name="idArea" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarMovimiento">
+            <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="idMenu" Mode="In" Type="Int32" />
+            <Parameter Name="p_movimiento" Mode="In" Type="String" />
+            <Parameter Name="p_cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="p_fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="p_precio" Mode="In" Type="Int64" />
+            <Parameter Name="p_observaciones" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarPedido" ReturnType="Collection(Int32)">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="pedido" Mode="In" Type="String" />
+            <Parameter Name="idMesa" Mode="In" Type="Int32" />
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarPedidoDetalle" ReturnType="Collection(Int32)">
+            <Parameter Name="idPedido" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="idMenu" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarPedidosTemp">
+            <Parameter Name="producto" Mode="In" Type="String" />
+            <Parameter Name="precio" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarPlato">
+            <Parameter Name="p_idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="p_idMenu" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GuardarUMedida">
+            <Parameter Name="p_UnidadMedida" Mode="In" Type="String" />
+            <Parameter Name="p_idRestaurante" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrarProducto">
+            <Parameter Name="p_producto" Mode="In" Type="String" />
+            <Parameter Name="p_idUnidadMedida" Mode="In" Type="Int32" />
+            <Parameter Name="p_precio" Mode="In" Type="Int32" />
+            <Parameter Name="p_idCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="p_idRestaurante" Mode="In" Type="Int32" />
+            <Parameter Name="p_stockMin" Mode="In" Type="Int32" />
+            <Parameter Name="p_preparadoEn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Valida_ingreso" ReturnType="Collection(ProceduresModels.Valida_ingreso_Result)">
+            <Parameter Name="nombre_usuario" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ConsultarAreas_Result">
+          <Property Type="Int32" Name="idArea" Nullable="false" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarCliente_Result">
+          <Property Type="Int32" Name="idCliente" Nullable="false" />
+          <Property Type="String" Name="cliente" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="celular" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nota" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tipoDocumento" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="documento" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="ConsultarEspecial_Result">
+          <Property Type="Int32" Name="idMenu" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="precio" Nullable="true" />
+          <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="Int32" Name="idCategoria" Nullable="true" />
+          <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarEspecialby_Result">
+          <Property Type="Int32" Name="idMenu" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="precio" Nullable="true" />
+          <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="Int32" Name="idCategoria" Nullable="true" />
+          <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarGuardarEspecial_Result">
+          <Property Type="Int32" Name="idMenu" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="precio" Nullable="true" />
+          <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="Int32" Name="idCategoria" Nullable="true" />
+          <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarMesas_Result">
+          <Property Type="Int32" Name="idMesa" Nullable="false" />
+          <Property Type="String" Name="mesa" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="idArea" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarMovimiento_Result">
+          <Property Type="Int32" Name="idInventario" Nullable="false" />
+          <Property Type="Int32" Name="idProducto" Nullable="true" />
+          <Property Type="Int32" Name="idMenu" Nullable="true" />
+          <Property Type="String" Name="movimiento" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="cant" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" Precision="23" />
+          <Property Type="String" Name="observacion" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="precio" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarPedidoDetalleXidPedido_Result">
+          <Property Type="Int32" Name="idPedidoDetalle" Nullable="false" />
+          <Property Type="Int32" Name="idPedido" Nullable="true" />
+          <Property Type="Int32" Name="idProducto" Nullable="true" />
+          <Property Type="Int32" Name="idMenu" Nullable="true" />
+          <Property Type="Int32" Name="estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarPlato_Result">
+          <Property Type="Int32" Name="idMenu" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="precio" Nullable="true" />
+          <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="Int32" Name="idCategoria" Nullable="true" />
+          <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+          <Property Type="Int32" Name="idProdcuto" Nullable="false" />
+          <Property Type="String" Name="producto" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="idUnidadMedida" Nullable="true" />
+          <Property Type="Int32" Name="precio1" Nullable="true" />
+          <Property Type="Int32" Name="idCategoria1" Nullable="true" />
+          <Property Type="Int32" Name="idRestaurante1" Nullable="true" />
+          <Property Type="Boolean" Name="activo1" Nullable="true" />
+          <Property Type="String" Name="preparadoEn1" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="stokMinimo" Nullable="true" />
+          <Property Type="Int32" Name="idPlato" Nullable="false" />
+          <Property Type="Int32" Name="idProdcuto1" Nullable="true" />
+          <Property Type="Int32" Name="idMenu1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarProducto_Result">
+          <Property Type="Int32" Name="idProdcuto" Nullable="false" />
+          <Property Type="String" Name="producto" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="idUnidadMedida" Nullable="true" />
+          <Property Type="Int32" Name="precio" Nullable="true" />
+          <Property Type="Int32" Name="idCategoria" Nullable="true" />
+          <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="String" Name="preparadoEn" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="stokMinimo" Nullable="true" />
+          <Property Type="Int32" Name="idUnidadMedida1" Nullable="false" />
+          <Property Type="String" Name="unidadMedida" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="idRestaurante1" Nullable="true" />
+          <Property Type="Int32" Name="idCategoriaProducto" Nullable="false" />
+          <Property Type="String" Name="categoriaProducto" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="idRestaurante2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarUltimoMovimiento_Result">
+          <Property Type="Int64" Name="precio" Nullable="true" />
+          <Property Type="String" Name="observacion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="unidadMedida" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="ConsultarUMedida_Result">
+          <Property Type="Int32" Name="idUnidadMedida" Nullable="false" />
+          <Property Type="String" Name="unidadMedida" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarVariacionesXidPedidoDetalle_Result">
+          <Property Type="String" Name="variacion" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="precio" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Valida_ingreso_Result">
+          <Property Type="Int32" Name="id_perfil" Nullable="true" />
+          <Property Type="String" Name="idUsuario" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="password" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="idRestaurante" Nullable="true" />
+          <Property Type="String" Name="restaurante" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="telefono" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="direccion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="observacion" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="iva" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProceduresModelsStoreContainer" CdmEntityContainer="ProceduresEntities" >
+          <FunctionImportMapping FunctionImportName="ActualizarCliente" FunctionName="ProceduresModels.Store.ActualizarCliente" />
+          <FunctionImportMapping FunctionImportName="ActualizarEspecial" FunctionName="ProceduresModels.Store.ActualizarEspecial" />
+          <FunctionImportMapping FunctionImportName="ActualizarEstadoPedidoXIdPedido" FunctionName="ProceduresModels.Store.ActualizarEstadoPedidoXIdPedido" />
+          <FunctionImportMapping FunctionImportName="ActualizarPedidoDetalle" FunctionName="ProceduresModels.Store.ActualizarPedidoDetalle" />
+          <FunctionImportMapping FunctionImportName="ActualizarProducto" FunctionName="ProceduresModels.Store.ActualizarProducto" />
+          <FunctionImportMapping FunctionImportName="ConsultarAreas" FunctionName="ProceduresModels.Store.ConsultarAreas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarAreas_Result">
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarCliente" FunctionName="ProceduresModels.Store.ConsultarCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarCliente_Result">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="nota" ColumnName="nota" />
+                <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarEspecial" FunctionName="ProceduresModels.Store.ConsultarEspecial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarEspecial_Result">
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarEspecialby" FunctionName="ProceduresModels.Store.ConsultarEspecialby">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarEspecialby_Result">
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarGuardarEspecial" FunctionName="ProceduresModels.Store.ConsultarGuardarEspecial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarGuardarEspecial_Result">
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarMesas" FunctionName="ProceduresModels.Store.ConsultarMesas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarMesas_Result">
+                <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+                <ScalarProperty Name="mesa" ColumnName="mesa" />
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarMovimiento" FunctionName="ProceduresModels.Store.ConsultarMovimiento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarMovimiento_Result">
+                <ScalarProperty Name="idInventario" ColumnName="idInventario" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="movimiento" ColumnName="movimiento" />
+                <ScalarProperty Name="cant" ColumnName="cant" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarPedidoDetalleXidPedido" FunctionName="ProceduresModels.Store.ConsultarPedidoDetalleXidPedido">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarPedidoDetalleXidPedido_Result">
+                <ScalarProperty Name="idPedidoDetalle" ColumnName="idPedidoDetalle" />
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarPedidoDetalleXPedidoEstado" FunctionName="ProceduresModels.Store.ConsultarPedidoDetalleXPedidoEstado" />
+          <FunctionImportMapping FunctionImportName="ConsultarPedidoXClienteEstado" FunctionName="ProceduresModels.Store.ConsultarPedidoXClienteEstado" />
+          <FunctionImportMapping FunctionImportName="ConsultarPlato" FunctionName="ProceduresModels.Store.ConsultarPlato">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarPlato_Result">
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+                <ScalarProperty Name="idProdcuto" ColumnName="idProdcuto" />
+                <ScalarProperty Name="producto" ColumnName="producto" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="precio1" ColumnName="precio1" />
+                <ScalarProperty Name="idCategoria1" ColumnName="idCategoria1" />
+                <ScalarProperty Name="idRestaurante1" ColumnName="idRestaurante1" />
+                <ScalarProperty Name="activo1" ColumnName="activo1" />
+                <ScalarProperty Name="preparadoEn1" ColumnName="preparadoEn1" />
+                <ScalarProperty Name="stokMinimo" ColumnName="stokMinimo" />
+                <ScalarProperty Name="idPlato" ColumnName="idPlato" />
+                <ScalarProperty Name="idProdcuto1" ColumnName="idProdcuto1" />
+                <ScalarProperty Name="idMenu1" ColumnName="idMenu1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarPrecioPedidoTemporal" FunctionName="ProceduresModels.Store.ConsultarPrecioPedidoTemporal" />
+          <FunctionImportMapping FunctionImportName="ConsultarProducto" FunctionName="ProceduresModels.Store.ConsultarProducto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarProducto_Result">
+                <ScalarProperty Name="idProdcuto" ColumnName="idProdcuto" />
+                <ScalarProperty Name="producto" ColumnName="producto" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+                <ScalarProperty Name="stokMinimo" ColumnName="stokMinimo" />
+                <ScalarProperty Name="idUnidadMedida1" ColumnName="idUnidadMedida1" />
+                <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+                <ScalarProperty Name="idRestaurante1" ColumnName="idRestaurante1" />
+                <ScalarProperty Name="idCategoriaProducto" ColumnName="idCategoriaProducto" />
+                <ScalarProperty Name="categoriaProducto" ColumnName="categoriaProducto" />
+                <ScalarProperty Name="idRestaurante2" ColumnName="idRestaurante2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Consultarstock" FunctionName="ProceduresModels.Store.Consultarstock" />
+          <FunctionImportMapping FunctionImportName="ConsultarUltimoMovimiento" FunctionName="ProceduresModels.Store.ConsultarUltimoMovimiento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarUltimoMovimiento_Result">
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarUMedida" FunctionName="ProceduresModels.Store.ConsultarUMedida">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarUMedida_Result">
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarVariacionesXidPedidoDetalle" FunctionName="ProceduresModels.Store.ConsultarVariacionesXidPedidoDetalle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.ConsultarVariacionesXidPedidoDetalle_Result">
+                <ScalarProperty Name="variacion" ColumnName="variacion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Crear_Usuario" FunctionName="ProceduresModels.Store.Crear_Usuario" />
+          <FunctionImportMapping FunctionImportName="DeletePedidosTemp" FunctionName="ProceduresModels.Store.DeletePedidosTemp" />
+          <FunctionImportMapping FunctionImportName="EliminarPlato" FunctionName="ProceduresModels.Store.EliminarPlato" />
+          <FunctionImportMapping FunctionImportName="GuardarArea" FunctionName="ProceduresModels.Store.GuardarArea" />
+          <FunctionImportMapping FunctionImportName="GuardarCliente" FunctionName="ProceduresModels.Store.GuardarCliente" />
+          <FunctionImportMapping FunctionImportName="GuardarEgreso" FunctionName="ProceduresModels.Store.GuardarEgreso" />
+          <FunctionImportMapping FunctionImportName="GuardarGasto" FunctionName="ProceduresModels.Store.GuardarGasto" />
+          <FunctionImportMapping FunctionImportName="GuardarIngrediente" FunctionName="ProceduresModels.Store.GuardarIngrediente" />
+          <FunctionImportMapping FunctionImportName="GuardarMesa" FunctionName="ProceduresModels.Store.GuardarMesa" />
+          <FunctionImportMapping FunctionImportName="GuardarMovimiento" FunctionName="ProceduresModels.Store.GuardarMovimiento" />
+          <FunctionImportMapping FunctionImportName="GuardarPedido" FunctionName="ProceduresModels.Store.GuardarPedido" />
+          <FunctionImportMapping FunctionImportName="GuardarPedidoDetalle" FunctionName="ProceduresModels.Store.GuardarPedidoDetalle" />
+          <FunctionImportMapping FunctionImportName="GuardarPedidosTemp" FunctionName="ProceduresModels.Store.GuardarPedidosTemp" />
+          <FunctionImportMapping FunctionImportName="GuardarPlato" FunctionName="ProceduresModels.Store.GuardarPlato" />
+          <FunctionImportMapping FunctionImportName="GuardarUMedida" FunctionName="ProceduresModels.Store.GuardarUMedida" />
+          <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="ProceduresModels.Store.RegistrarProducto" />
+          <FunctionImportMapping FunctionImportName="Valida_ingreso" FunctionName="ProceduresModels.Store.Valida_ingreso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProceduresModels.Valida_ingreso_Result">
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+                <ScalarProperty Name="restaurante" ColumnName="restaurante" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ca687a14dd3408c96f0a0fe328e820f" Name="Diagram1">
+        <EntityTypeShape EntityType="RestauranteModel.Area" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.CajaApertura" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.CajaCierre" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.CajaMenor" Width="1.5" PointX="13.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Categoria" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Cliente" Width="1.5" PointX="9.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Compra" Width="1.5" PointX="5.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.CompraDetalle" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Egresos" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Estado" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Factura" Width="1.5" PointX="12" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.FacturaAdicional" Width="1.5" PointX="14.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.FacturaDetalle" Width="1.5" PointX="14.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.FormaPago" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Gastos" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Inventario" Width="1.5" PointX="7.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.MedioPago" Width="1.5" PointX="15" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Menu" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Mesa" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Pago" Width="1.5" PointX="17.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Parametros" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Pedido" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.PedidoDetalle" Width="1.5" PointX="9.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.PedidosTemporales" Width="1.5" PointX="15.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Perfil" Width="1.5" PointX="15.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Personalizaciones" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Plato" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Producto" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Proveedor" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Restaurante" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.UnidadMedida" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Usuario" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.Variacion" Width="1.5" PointX="12" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestauranteModel.VariacionLista" Width="1.5" PointX="9.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="RestauranteModel.FK_Area_Restaurante" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Mesa_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK__Categoria__idRes__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK__Menu__idCategori__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Producto_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Factura_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Compra_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_CompraDetalle_Compra" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_CompraDetalle_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK__Egresos__idForma__79FD19BE" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_FacturaAdicional_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_FacturaDetalle_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Pago_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Inventario_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Pago_MedioPago" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK__PedidoDet__idMen__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Plato_Ingrediente" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Pedido_Mesa" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Pedido_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_PedidoDetalle_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_PedidoDetalle_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Variacion_PedidoDetalle" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Plato_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK__Producto__idRest__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Producto_UnidadMedida" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK__UnidadMed__idRes__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="RestauranteModel.FK_Variacion_VariacionLista" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

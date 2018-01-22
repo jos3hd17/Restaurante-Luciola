@@ -1,0 +1,2111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RestauranteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idArea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="area" Type="varchar" MaxLength="50" />
+          <Property Name="idRestaurante" Type="int" />
+        </EntityType>
+        <EntityType Name="CajaApertura">
+          <Key>
+            <PropertyRef Name="idCajaApertura" />
+          </Key>
+          <Property Name="idCajaApertura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fehcaApertura" Type="datetime" />
+          <Property Name="idUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="CajaCierre">
+          <Key>
+            <PropertyRef Name="idCajaCierre" />
+          </Key>
+          <Property Name="idCajaCierre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaCierre" Type="datetime" />
+          <Property Name="valorTotal" Type="int" />
+          <Property Name="idMedioPago" Type="int" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="idUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="CajaMenor">
+          <Key>
+            <PropertyRef Name="idCajaMenor" />
+          </Key>
+          <Property Name="idCajaMenor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="tipoMov" Type="varchar" MaxLength="50" />
+          <Property Name="valor" Type="int" />
+          <Property Name="ciudad" Type="varchar" MaxLength="50" />
+          <Property Name="persona" Type="varchar" MaxLength="150" />
+          <Property Name="concepto" Type="varchar" MaxLength="150" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoriaProducto" />
+          </Key>
+          <Property Name="idCategoriaProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoriaProducto" Type="varchar" MaxLength="50" />
+          <Property Name="idRestaurante" Type="int" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cliente" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="150" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="celular" Type="varchar" MaxLength="50" />
+          <Property Name="nota" Type="varchar" MaxLength="500" />
+          <Property Name="tipoDocumento" Type="varchar" MaxLength="10" />
+          <Property Name="documento" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="idCompra" />
+          </Key>
+          <Property Name="idCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProveedor" Type="int" />
+          <Property Name="idFormaPago" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="fechaPago" Type="date" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="CompraDetalle">
+          <Key>
+            <PropertyRef Name="idCompraDetalle" />
+          </Key>
+          <Property Name="idCompraDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCompra" Type="int" />
+          <Property Name="idProducto" Type="int" />
+          <Property Name="precioUnit" Type="int" />
+          <Property Name="cant" Type="int" />
+          <Property Name="precioTot" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Restaurante.dbo.CorreoEnvio' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="CorreoEnvio">
+          <Property Name="idCorreoEnvio" Type="int" />
+          <Property Name="correoEnvio" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Egresos">
+          <Key>
+            <PropertyRef Name="idEgreso" />
+          </Key>
+          <Property Name="idEgreso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ciudad" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="remitente" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="telefonoRemitente" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cedulaRemitente" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="concepto" Type="varchar" MaxLength="1000" />
+          <Property Name="direccion" Type="varchar" MaxLength="255" />
+          <Property Name="responsable" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="valor" Type="bigint" Nullable="false" />
+          <Property Name="idFormaPago" Type="int" />
+          <Property Name="fechaEgreso" Type="date" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="idFactura" />
+          </Key>
+          <Property Name="idFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCliente" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="propina" Type="int" />
+          <Property Name="valor" Type="int" />
+          <Property Name="impuesto" Type="int" />
+        </EntityType>
+        <EntityType Name="FacturaAdicional">
+          <Key>
+            <PropertyRef Name="idFacAdicional" />
+          </Key>
+          <Property Name="idFacAdicional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFactura" Type="int" />
+          <Property Name="idIngrediente" Type="int" />
+          <Property Name="precio" Type="int" />
+          <Property Name="cant" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="FacturaDetalle">
+          <Key>
+            <PropertyRef Name="idDetralleFac" />
+          </Key>
+          <Property Name="idDetralleFac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFactura" Type="int" />
+          <Property Name="idPorducto" Type="int" />
+          <Property Name="precio" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="cant" Type="int" />
+          <Property Name="descuento" Type="int" />
+        </EntityType>
+        <EntityType Name="FormaPago">
+          <Key>
+            <PropertyRef Name="idFormaPago" />
+          </Key>
+          <Property Name="idFormaPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormaPago" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Gastos">
+          <Key>
+            <PropertyRef Name="idGasto" />
+          </Key>
+          <Property Name="idGasto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEmpresa" Type="int" Nullable="false" />
+          <Property Name="fechaGastos" Type="varchar" MaxLength="50" />
+          <Property Name="responsable" Type="varchar" MaxLength="255" />
+          <Property Name="remitente" Type="varchar" MaxLength="255" />
+          <Property Name="nombrePersonaRemitente" Type="varchar" MaxLength="255" />
+          <Property Name="cedulaPersonaRemitente" Type="varchar" MaxLength="255" />
+          <Property Name="valorGasto" Type="bigint" />
+          <Property Name="descripcionGasto" Type="varchar" MaxLength="1000" />
+          <Property Name="telefono" Type="varchar" MaxLength="255" />
+          <Property Name="ciudad" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Inventario">
+          <Key>
+            <PropertyRef Name="idInventario" />
+          </Key>
+          <Property Name="idInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProducto" Type="int" />
+          <Property Name="idMenu" Type="int" />
+          <Property Name="movimiento" Type="varchar" MaxLength="50" />
+          <Property Name="cant" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="observacion" Type="varchar" MaxLength="500" />
+          <Property Name="precio" Type="bigint" />
+        </EntityType>
+        <EntityType Name="MedioPago">
+          <Key>
+            <PropertyRef Name="idMedioPago" />
+          </Key>
+          <Property Name="idMedioPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="medioPago" Type="int" />
+          <Property Name="activo" Type="int" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="idMenu" />
+          </Key>
+          <Property Name="idMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="precio" Type="int" />
+          <Property Name="preparadoEn" Type="varchar" MaxLength="30" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="idCategoria" Type="int" />
+          <Property Name="idRestaurante" Type="int" />
+        </EntityType>
+        <EntityType Name="Mesa">
+          <Key>
+            <PropertyRef Name="idMesa" />
+          </Key>
+          <Property Name="idMesa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mesa" Type="varchar" MaxLength="10" />
+          <Property Name="idArea" Type="int" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="idPago" />
+          </Key>
+          <Property Name="idPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFactura" Type="int" />
+          <Property Name="idMedioPago" Type="int" />
+          <Property Name="valor" Type="int" />
+        </EntityType>
+        <EntityType Name="Parametros">
+          <Key>
+            <PropertyRef Name="idParametro" />
+          </Key>
+          <Property Name="idParametro" Type="int" Nullable="false" />
+          <Property Name="iva" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="idRestaurante" Type="int" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCliente" Type="int" />
+          <Property Name="pedido" Type="varchar" MaxLength="50" />
+          <Property Name="idMesa" Type="int" />
+          <Property Name="estado" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="idUsuario" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PedidoDetalle">
+          <Key>
+            <PropertyRef Name="idPedidoDetalle" />
+          </Key>
+          <Property Name="idPedidoDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPedido" Type="int" />
+          <Property Name="idProducto" Type="int" />
+          <Property Name="idMenu" Type="int" />
+          <Property Name="estado" Type="int" />
+        </EntityType>
+        <EntityType Name="PedidosTemporales">
+          <Key>
+            <PropertyRef Name="idPedidoTemporal" />
+          </Key>
+          <Property Name="idPedidoTemporal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="producto" Type="varchar" MaxLength="255" />
+          <Property Name="precio" Type="varchar" MaxLength="50" />
+          <Property Name="personalizacion" Type="int" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="id_perfil" />
+          </Key>
+          <Property Name="id_perfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_perfil" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Personalizaciones">
+          <Key>
+            <PropertyRef Name="idPersonalizacion" />
+          </Key>
+          <Property Name="idPersonalizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="2000" />
+          <Property Name="categoria" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="idPlato" />
+          </Key>
+          <Property Name="idPlato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProdcuto" Type="int" />
+          <Property Name="idMenu" Type="int" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="idProdcuto" />
+          </Key>
+          <Property Name="idProdcuto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="producto" Type="varchar" MaxLength="150" />
+          <Property Name="idUnidadMedida" Type="int" />
+          <Property Name="precio" Type="int" />
+          <Property Name="idCategoria" Type="int" />
+          <Property Name="idRestaurante" Type="int" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="preparadoEn" Type="varchar" MaxLength="30" />
+          <Property Name="stokMinimo" Type="int" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="idProveedor" />
+          </Key>
+          <Property Name="idProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="proveedor" Type="varchar" MaxLength="150" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+          <Property Name="notas" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Restaurante">
+          <Key>
+            <PropertyRef Name="idRestaurante" />
+          </Key>
+          <Property Name="idRestaurante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="restaurante" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="observacion" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="idUnidadMedida" />
+          </Key>
+          <Property Name="idUnidadMedida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unidadMedida" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="idRestaurante" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varbinary" MaxLength="500" />
+          <Property Name="idPerfil" Type="int" />
+          <Property Name="idRestaurante" Type="int" />
+          <Property Name="esadmin" Type="int" />
+          <Property Name="activo" Type="int" />
+        </EntityType>
+        <EntityType Name="Variacion">
+          <Key>
+            <PropertyRef Name="idVariacion" />
+          </Key>
+          <Property Name="idVariacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPedidoDetalle" Type="int" />
+          <Property Name="idVariacionLista" Type="int" />
+        </EntityType>
+        <EntityType Name="VariacionLista">
+          <Key>
+            <PropertyRef Name="idVariacionLista" />
+          </Key>
+          <Property Name="idVariacionLista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="variacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="precio" Type="int" Nullable="false" />
+          <Property Name="idRestaurante" Type="int" />
+        </EntityType>
+        <Association Name="FK__Categoria__idRes__5441852A">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="idRestaurante" />
+            </Principal>
+            <Dependent Role="Categoria">
+              <PropertyRef Name="idRestaurante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Egresos__idForma__79FD19BE">
+          <End Role="FormaPago" Type="Self.FormaPago" Multiplicity="0..1" />
+          <End Role="Egresos" Type="Self.Egresos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormaPago">
+              <PropertyRef Name="idFormaPago" />
+            </Principal>
+            <Dependent Role="Egresos">
+              <PropertyRef Name="idFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__idCategori__5CD6CB2B">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoriaProducto" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoDet__idMen__628FA481">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="idMenu" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__idRest__6754599E">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="idRestaurante" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idRestaurante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UnidadMed__idRes__07C12930">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="idRestaurante" />
+            </Principal>
+            <Dependent Role="UnidadMedida">
+              <PropertyRef Name="idRestaurante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Area_Restaurante">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="idRestaurante" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="idRestaurante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Compra_Proveedor">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="idProveedor" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="idProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompraDetalle_Compra">
+          <End Role="Compra" Type="Self.Compra" Multiplicity="0..1" />
+          <End Role="CompraDetalle" Type="Self.CompraDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compra">
+              <PropertyRef Name="idCompra" />
+            </Principal>
+            <Dependent Role="CompraDetalle">
+              <PropertyRef Name="idCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompraDetalle_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="CompraDetalle" Type="Self.CompraDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProdcuto" />
+            </Principal>
+            <Dependent Role="CompraDetalle">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturaAdicional_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="FacturaAdicional" Type="Self.FacturaAdicional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="FacturaAdicional">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturaDetalle_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="FacturaDetalle" Type="Self.FacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="FacturaDetalle">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventario_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProdcuto" />
+            </Principal>
+            <Dependent Role="Inventario">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mesa_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pago_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pago_MedioPago">
+          <End Role="MedioPago" Type="Self.MedioPago" Multiplicity="0..1" />
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedioPago">
+              <PropertyRef Name="idMedioPago" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="idMedioPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Mesa">
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesa">
+              <PropertyRef Name="idMesa" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idMesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoDetalle_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoDetalle_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProdcuto" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plato_Ingrediente">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Plato" Type="Self.Plato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="idMenu" />
+            </Principal>
+            <Dependent Role="Plato">
+              <PropertyRef Name="idMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plato_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Plato" Type="Self.Plato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProdcuto" />
+            </Principal>
+            <Dependent Role="Plato">
+              <PropertyRef Name="idProdcuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoriaProducto" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_UnidadMedida">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variacion_PedidoDetalle">
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="0..1" />
+          <End Role="Variacion" Type="Self.Variacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PedidoDetalle">
+              <PropertyRef Name="idPedidoDetalle" />
+            </Principal>
+            <Dependent Role="Variacion">
+              <PropertyRef Name="idPedidoDetalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variacion_VariacionLista">
+          <End Role="VariacionLista" Type="Self.VariacionLista" Multiplicity="0..1" />
+          <End Role="Variacion" Type="Self.Variacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariacionLista">
+              <PropertyRef Name="idVariacionLista" />
+            </Principal>
+            <Dependent Role="Variacion">
+              <PropertyRef Name="idVariacionLista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestauranteModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CajaApertura" EntityType="Self.CajaApertura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CajaCierre" EntityType="Self.CajaCierre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CajaMenor" EntityType="Self.CajaMenor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompraDetalle" EntityType="Self.CompraDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Egresos" EntityType="Self.Egresos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacturaAdicional" EntityType="Self.FacturaAdicional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacturaDetalle" EntityType="Self.FacturaDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormaPago" EntityType="Self.FormaPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventario" EntityType="Self.Inventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedioPago" EntityType="Self.MedioPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesa" EntityType="Self.Mesa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoDetalle" EntityType="Self.PedidoDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidosTemporales" EntityType="Self.PedidosTemporales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personalizaciones" EntityType="Self.Personalizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurante" EntityType="Self.Restaurante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadMedida" EntityType="Self.UnidadMedida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Variacion" EntityType="Self.Variacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariacionLista" EntityType="Self.VariacionLista" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Categoria__idRes__5441852A" Association="Self.FK__Categoria__idRes__5441852A">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Categoria" EntitySet="Categoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Egresos__idForma__79FD19BE" Association="Self.FK__Egresos__idForma__79FD19BE">
+            <End Role="FormaPago" EntitySet="FormaPago" />
+            <End Role="Egresos" EntitySet="Egresos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__idCategori__5CD6CB2B" Association="Self.FK__Menu__idCategori__5CD6CB2B">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoDet__idMen__628FA481" Association="Self.FK__PedidoDet__idMen__628FA481">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__idRest__6754599E" Association="Self.FK__Producto__idRest__6754599E">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UnidadMed__idRes__07C12930" Association="Self.FK__UnidadMed__idRes__07C12930">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Area_Restaurante" Association="Self.FK_Area_Restaurante">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Compra_Proveedor" Association="Self.FK_Compra_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompraDetalle_Compra" Association="Self.FK_CompraDetalle_Compra">
+            <End Role="Compra" EntitySet="Compra" />
+            <End Role="CompraDetalle" EntitySet="CompraDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompraDetalle_Producto" Association="Self.FK_CompraDetalle_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="CompraDetalle" EntitySet="CompraDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturaAdicional_Factura" Association="Self.FK_FacturaAdicional_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="FacturaAdicional" EntitySet="FacturaAdicional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturaDetalle_Factura" Association="Self.FK_FacturaDetalle_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="FacturaDetalle" EntitySet="FacturaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventario_Producto" Association="Self.FK_Inventario_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Inventario" EntitySet="Inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mesa_Area" Association="Self.FK_Mesa_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pago_Factura" Association="Self.FK_Pago_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pago_MedioPago" Association="Self.FK_Pago_MedioPago">
+            <End Role="MedioPago" EntitySet="MedioPago" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Mesa" Association="Self.FK_Pedido_Mesa">
+            <End Role="Mesa" EntitySet="Mesa" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Usuario" Association="Self.FK_Pedido_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoDetalle_Pedido" Association="Self.FK_PedidoDetalle_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoDetalle_Producto" Association="Self.FK_PedidoDetalle_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plato_Ingrediente" Association="Self.FK_Plato_Ingrediente">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Plato" EntitySet="Plato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plato_Producto" Association="Self.FK_Plato_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Plato" EntitySet="Plato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Categoria" Association="Self.FK_Producto_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_UnidadMedida" Association="Self.FK_Producto_UnidadMedida">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variacion_PedidoDetalle" Association="Self.FK_Variacion_PedidoDetalle">
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+            <End Role="Variacion" EntitySet="Variacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variacion_VariacionLista" Association="Self.FK_Variacion_VariacionLista">
+            <End Role="VariacionLista" EntitySet="VariacionLista" />
+            <End Role="Variacion" EntitySet="Variacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestauranteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="idArea" />
+          </Key>
+          <Property Name="idArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="area1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idRestaurante" Type="Int32" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK_Area_Restaurante" FromRole="Area" ToRole="Restaurante" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_Mesa_Area" FromRole="Area" ToRole="Mesa" />
+        </EntityType>
+        <EntityType Name="CajaApertura">
+          <Key>
+            <PropertyRef Name="idCajaApertura" />
+          </Key>
+          <Property Name="idCajaApertura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fehcaApertura" Type="DateTime" Precision="3" />
+          <Property Name="idUsuario" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CajaCierre">
+          <Key>
+            <PropertyRef Name="idCajaCierre" />
+          </Key>
+          <Property Name="idCajaCierre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaCierre" Type="DateTime" Precision="3" />
+          <Property Name="valorTotal" Type="Int32" />
+          <Property Name="idMedioPago" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="idUsuario" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CajaMenor">
+          <Key>
+            <PropertyRef Name="idCajaMenor" />
+          </Key>
+          <Property Name="idCajaMenor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="tipoMov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="Int32" />
+          <Property Name="ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="persona" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="concepto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoriaProducto" />
+          </Key>
+          <Property Name="idCategoriaProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoriaProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idRestaurante" Type="Int32" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK__Categoria__idRes__5441852A" FromRole="Categoria" ToRole="Restaurante" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__Menu__idCategori__5CD6CB2B" FromRole="Categoria" ToRole="Menu" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Categoria" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cliente1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nota" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="tipoDocumento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_Factura_Cliente" FromRole="Cliente" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="idCompra" />
+          </Key>
+          <Property Name="idCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProveedor" Type="Int32" />
+          <Property Name="idFormaPago" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="fechaPago" Type="DateTime" Precision="0" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK_Compra_Proveedor" FromRole="Compra" ToRole="Proveedor" />
+          <NavigationProperty Name="CompraDetalle" Relationship="Self.FK_CompraDetalle_Compra" FromRole="Compra" ToRole="CompraDetalle" />
+        </EntityType>
+        <EntityType Name="CompraDetalle">
+          <Key>
+            <PropertyRef Name="idCompraDetalle" />
+          </Key>
+          <Property Name="idCompraDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCompra" Type="Int32" />
+          <Property Name="idProducto" Type="Int32" />
+          <Property Name="precioUnit" Type="Int32" />
+          <Property Name="cant" Type="Int32" />
+          <Property Name="precioTot" Type="Int32" />
+          <NavigationProperty Name="Compra" Relationship="Self.FK_CompraDetalle_Compra" FromRole="CompraDetalle" ToRole="Compra" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_CompraDetalle_Producto" FromRole="CompraDetalle" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Egresos">
+          <Key>
+            <PropertyRef Name="idEgreso" />
+          </Key>
+          <Property Name="idEgreso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ciudad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="remitente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefonoRemitente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedulaRemitente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="concepto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valor" Type="Int64" Nullable="false" />
+          <Property Name="idFormaPago" Type="Int32" />
+          <Property Name="fechaEgreso" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="FormaPago" Relationship="Self.FK__Egresos__idForma__79FD19BE" FromRole="Egresos" ToRole="FormaPago" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="idEstado" />
+          </Key>
+          <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="idFactura" />
+          </Key>
+          <Property Name="idFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCliente" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="propina" Type="Int32" />
+          <Property Name="valor" Type="Int32" />
+          <Property Name="impuesto" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Factura_Cliente" FromRole="Factura" ToRole="Cliente" />
+          <NavigationProperty Name="FacturaAdicional" Relationship="Self.FK_FacturaAdicional_Factura" FromRole="Factura" ToRole="FacturaAdicional" />
+          <NavigationProperty Name="FacturaDetalle" Relationship="Self.FK_FacturaDetalle_Factura" FromRole="Factura" ToRole="FacturaDetalle" />
+          <NavigationProperty Name="Pago" Relationship="Self.FK_Pago_Factura" FromRole="Factura" ToRole="Pago" />
+        </EntityType>
+        <EntityType Name="FacturaAdicional">
+          <Key>
+            <PropertyRef Name="idFacAdicional" />
+          </Key>
+          <Property Name="idFacAdicional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFactura" Type="Int32" />
+          <Property Name="idIngrediente" Type="Int32" />
+          <Property Name="precio" Type="Int32" />
+          <Property Name="cant" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_FacturaAdicional_Factura" FromRole="FacturaAdicional" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="FacturaDetalle">
+          <Key>
+            <PropertyRef Name="idDetralleFac" />
+          </Key>
+          <Property Name="idDetralleFac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFactura" Type="Int32" />
+          <Property Name="idPorducto" Type="Int32" />
+          <Property Name="precio" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="cant" Type="Int32" />
+          <Property Name="descuento" Type="Int32" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_FacturaDetalle_Factura" FromRole="FacturaDetalle" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="FormaPago">
+          <Key>
+            <PropertyRef Name="idFormaPago" />
+          </Key>
+          <Property Name="idFormaPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormaPago1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Egresos" Relationship="Self.FK__Egresos__idForma__79FD19BE" FromRole="FormaPago" ToRole="Egresos" />
+        </EntityType>
+        <EntityType Name="Gastos">
+          <Key>
+            <PropertyRef Name="idGasto" />
+          </Key>
+          <Property Name="idGasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="fechaGastos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="remitente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nombrePersonaRemitente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cedulaPersonaRemitente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="valorGasto" Type="Int64" />
+          <Property Name="descripcionGasto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ciudad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inventario">
+          <Key>
+            <PropertyRef Name="idInventario" />
+          </Key>
+          <Property Name="idInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProducto" Type="Int32" />
+          <Property Name="idMenu" Type="Int32" />
+          <Property Name="movimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cant" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Int64" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Inventario_Producto" FromRole="Inventario" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="MedioPago">
+          <Key>
+            <PropertyRef Name="idMedioPago" />
+          </Key>
+          <Property Name="idMedioPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="medioPago1" Type="Int32" />
+          <Property Name="activo" Type="Int32" />
+          <NavigationProperty Name="Pago" Relationship="Self.FK_Pago_MedioPago" FromRole="MedioPago" ToRole="Pago" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="idMenu" />
+          </Key>
+          <Property Name="idMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Int32" />
+          <Property Name="preparadoEn" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="idRestaurante" Type="Int32" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Menu__idCategori__5CD6CB2B" FromRole="Menu" ToRole="Categoria" />
+          <NavigationProperty Name="PedidoDetalle" Relationship="Self.FK__PedidoDet__idMen__628FA481" FromRole="Menu" ToRole="PedidoDetalle" />
+          <NavigationProperty Name="Plato" Relationship="Self.FK_Plato_Ingrediente" FromRole="Menu" ToRole="Plato" />
+        </EntityType>
+        <EntityType Name="Mesa">
+          <Key>
+            <PropertyRef Name="idMesa" />
+          </Key>
+          <Property Name="idMesa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mesa1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="idArea" Type="Int32" />
+          <NavigationProperty Name="Area" Relationship="Self.FK_Mesa_Area" FromRole="Mesa" ToRole="Area" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Mesa" FromRole="Mesa" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="idPago" />
+          </Key>
+          <Property Name="idPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFactura" Type="Int32" />
+          <Property Name="idMedioPago" Type="Int32" />
+          <Property Name="valor" Type="Int32" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_Pago_Factura" FromRole="Pago" ToRole="Factura" />
+          <NavigationProperty Name="MedioPago" Relationship="Self.FK_Pago_MedioPago" FromRole="Pago" ToRole="MedioPago" />
+        </EntityType>
+        <EntityType Name="Parametros">
+          <Key>
+            <PropertyRef Name="idParametro" />
+          </Key>
+          <Property Name="idParametro" Type="Int32" Nullable="false" />
+          <Property Name="iva" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="idRestaurante" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCliente" Type="Int32" />
+          <Property Name="pedido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idMesa" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="idUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_Pedido_Mesa" FromRole="Pedido" ToRole="Mesa" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Pedido_Usuario" FromRole="Pedido" ToRole="Usuario" />
+          <NavigationProperty Name="PedidoDetalle" Relationship="Self.FK_PedidoDetalle_Pedido" FromRole="Pedido" ToRole="PedidoDetalle" />
+        </EntityType>
+        <EntityType Name="PedidoDetalle">
+          <Key>
+            <PropertyRef Name="idPedidoDetalle" />
+          </Key>
+          <Property Name="idPedidoDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPedido" Type="Int32" />
+          <Property Name="idProducto" Type="Int32" />
+          <Property Name="idMenu" Type="Int32" />
+          <Property Name="estado" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__PedidoDet__idMen__628FA481" FromRole="PedidoDetalle" ToRole="Menu" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_PedidoDetalle_Pedido" FromRole="PedidoDetalle" ToRole="Pedido" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_PedidoDetalle_Producto" FromRole="PedidoDetalle" ToRole="Producto" />
+          <NavigationProperty Name="Variacion" Relationship="Self.FK_Variacion_PedidoDetalle" FromRole="PedidoDetalle" ToRole="Variacion" />
+        </EntityType>
+        <EntityType Name="PedidosTemporales">
+          <Key>
+            <PropertyRef Name="idPedidoTemporal" />
+          </Key>
+          <Property Name="idPedidoTemporal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="producto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="personalizacion" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="id_perfil" />
+          </Key>
+          <Property Name="id_perfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Personalizaciones">
+          <Key>
+            <PropertyRef Name="idPersonalizacion" />
+          </Key>
+          <Property Name="idPersonalizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="idPlato" />
+          </Key>
+          <Property Name="idPlato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProdcuto" Type="Int32" />
+          <Property Name="idMenu" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_Plato_Ingrediente" FromRole="Plato" ToRole="Menu" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Plato_Producto" FromRole="Plato" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="idProdcuto" />
+          </Key>
+          <Property Name="idProdcuto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="producto1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="idUnidadMedida" Type="Int32" />
+          <Property Name="precio" Type="Int32" />
+          <Property Name="idCategoria" Type="Int32" />
+          <Property Name="idRestaurante" Type="Int32" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="preparadoEn" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="stokMinimo" Type="Int32" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_Producto_Categoria" FromRole="Producto" ToRole="Categoria" />
+          <NavigationProperty Name="CompraDetalle" Relationship="Self.FK_CompraDetalle_Producto" FromRole="Producto" ToRole="CompraDetalle" />
+          <NavigationProperty Name="Inventario" Relationship="Self.FK_Inventario_Producto" FromRole="Producto" ToRole="Inventario" />
+          <NavigationProperty Name="PedidoDetalle" Relationship="Self.FK_PedidoDetalle_Producto" FromRole="Producto" ToRole="PedidoDetalle" />
+          <NavigationProperty Name="Plato" Relationship="Self.FK_Plato_Producto" FromRole="Producto" ToRole="Plato" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK__Producto__idRest__6754599E" FromRole="Producto" ToRole="Restaurante" />
+          <NavigationProperty Name="UnidadMedida" Relationship="Self.FK_Producto_UnidadMedida" FromRole="Producto" ToRole="UnidadMedida" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="idProveedor" />
+          </Key>
+          <Property Name="idProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="proveedor1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="notas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Compra" Relationship="Self.FK_Compra_Proveedor" FromRole="Proveedor" ToRole="Compra" />
+        </EntityType>
+        <EntityType Name="Restaurante">
+          <Key>
+            <PropertyRef Name="idRestaurante" />
+          </Key>
+          <Property Name="idRestaurante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="restaurante1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Area" Relationship="Self.FK_Area_Restaurante" FromRole="Restaurante" ToRole="Area" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Categoria__idRes__5441852A" FromRole="Restaurante" ToRole="Categoria" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__idRest__6754599E" FromRole="Restaurante" ToRole="Producto" />
+          <NavigationProperty Name="UnidadMedida" Relationship="Self.FK__UnidadMed__idRes__07C12930" FromRole="Restaurante" ToRole="UnidadMedida" />
+        </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="idUnidadMedida" />
+          </Key>
+          <Property Name="idUnidadMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unidadMedida1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idRestaurante" Type="Int32" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_UnidadMedida" FromRole="UnidadMedida" ToRole="Producto" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.FK__UnidadMed__idRes__07C12930" FromRole="UnidadMedida" ToRole="Restaurante" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="Binary" MaxLength="500" FixedLength="false" />
+          <Property Name="idPerfil" Type="Int32" />
+          <Property Name="idRestaurante" Type="Int32" />
+          <Property Name="esadmin" Type="Int32" />
+          <Property Name="activo" Type="Int32" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Usuario" FromRole="Usuario" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Variacion">
+          <Key>
+            <PropertyRef Name="idVariacion" />
+          </Key>
+          <Property Name="idVariacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPedidoDetalle" Type="Int32" />
+          <Property Name="idVariacionLista" Type="Int32" />
+          <NavigationProperty Name="PedidoDetalle" Relationship="Self.FK_Variacion_PedidoDetalle" FromRole="Variacion" ToRole="PedidoDetalle" />
+          <NavigationProperty Name="VariacionLista" Relationship="Self.FK_Variacion_VariacionLista" FromRole="Variacion" ToRole="VariacionLista" />
+        </EntityType>
+        <EntityType Name="VariacionLista">
+          <Key>
+            <PropertyRef Name="idVariacionLista" />
+          </Key>
+          <Property Name="idVariacionLista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="variacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Int32" Nullable="false" />
+          <Property Name="idRestaurante" Type="Int32" />
+          <NavigationProperty Name="Variacion1" Relationship="Self.FK_Variacion_VariacionLista" FromRole="VariacionLista" ToRole="Variacion" />
+        </EntityType>
+        <Association Name="FK_Area_Restaurante">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="idRestaurante" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="idRestaurante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mesa_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categoria__idRes__5441852A">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="idRestaurante" />
+            </Principal>
+            <Dependent Role="Categoria">
+              <PropertyRef Name="idRestaurante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__idCategori__5CD6CB2B">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoriaProducto" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoriaProducto" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Compra_Proveedor">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="idProveedor" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="idProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompraDetalle_Compra">
+          <End Role="Compra" Type="Self.Compra" Multiplicity="0..1" />
+          <End Role="CompraDetalle" Type="Self.CompraDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compra">
+              <PropertyRef Name="idCompra" />
+            </Principal>
+            <Dependent Role="CompraDetalle">
+              <PropertyRef Name="idCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompraDetalle_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="CompraDetalle" Type="Self.CompraDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProdcuto" />
+            </Principal>
+            <Dependent Role="CompraDetalle">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Egresos__idForma__79FD19BE">
+          <End Role="FormaPago" Type="Self.FormaPago" Multiplicity="0..1" />
+          <End Role="Egresos" Type="Self.Egresos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormaPago">
+              <PropertyRef Name="idFormaPago" />
+            </Principal>
+            <Dependent Role="Egresos">
+              <PropertyRef Name="idFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturaAdicional_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="FacturaAdicional" Type="Self.FacturaAdicional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="FacturaAdicional">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturaDetalle_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="FacturaDetalle" Type="Self.FacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="FacturaDetalle">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pago_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventario_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProdcuto" />
+            </Principal>
+            <Dependent Role="Inventario">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pago_MedioPago">
+          <End Role="MedioPago" Type="Self.MedioPago" Multiplicity="0..1" />
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedioPago">
+              <PropertyRef Name="idMedioPago" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="idMedioPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoDet__idMen__628FA481">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="idMenu" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plato_Ingrediente">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Plato" Type="Self.Plato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="idMenu" />
+            </Principal>
+            <Dependent Role="Plato">
+              <PropertyRef Name="idMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Mesa">
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesa">
+              <PropertyRef Name="idMesa" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idMesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoDetalle_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="0..1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoDetalle_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProdcuto" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variacion_PedidoDetalle">
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="0..1" />
+          <End Role="Variacion" Type="Self.Variacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PedidoDetalle">
+              <PropertyRef Name="idPedidoDetalle" />
+            </Principal>
+            <Dependent Role="Variacion">
+              <PropertyRef Name="idPedidoDetalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plato_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Plato" Type="Self.Plato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProdcuto" />
+            </Principal>
+            <Dependent Role="Plato">
+              <PropertyRef Name="idProdcuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__idRest__6754599E">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="idRestaurante" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idRestaurante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_UnidadMedida">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UnidadMed__idRes__07C12930">
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="0..1" />
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="idRestaurante" />
+            </Principal>
+            <Dependent Role="UnidadMedida">
+              <PropertyRef Name="idRestaurante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variacion_VariacionLista">
+          <End Role="VariacionLista" Type="Self.VariacionLista" Multiplicity="0..1" />
+          <End Role="Variacion" Type="Self.Variacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariacionLista">
+              <PropertyRef Name="idVariacionLista" />
+            </Principal>
+            <Dependent Role="Variacion">
+              <PropertyRef Name="idVariacionLista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestauranteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="CajaApertura" EntityType="Self.CajaApertura" />
+          <EntitySet Name="CajaCierre" EntityType="Self.CajaCierre" />
+          <EntitySet Name="CajaMenor" EntityType="Self.CajaMenor" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Compra" EntityType="Self.Compra" />
+          <EntitySet Name="CompraDetalle" EntityType="Self.CompraDetalle" />
+          <EntitySet Name="Egresos" EntityType="Self.Egresos" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" />
+          <EntitySet Name="FacturaAdicional" EntityType="Self.FacturaAdicional" />
+          <EntitySet Name="FacturaDetalle" EntityType="Self.FacturaDetalle" />
+          <EntitySet Name="FormaPago" EntityType="Self.FormaPago" />
+          <EntitySet Name="Gastos" EntityType="Self.Gastos" />
+          <EntitySet Name="Inventario" EntityType="Self.Inventario" />
+          <EntitySet Name="MedioPago" EntityType="Self.MedioPago" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Mesa" EntityType="Self.Mesa" />
+          <EntitySet Name="Pago" EntityType="Self.Pago" />
+          <EntitySet Name="Parametros" EntityType="Self.Parametros" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+          <EntitySet Name="PedidoDetalle" EntityType="Self.PedidoDetalle" />
+          <EntitySet Name="PedidosTemporales" EntityType="Self.PedidosTemporales" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" />
+          <EntitySet Name="Personalizaciones" EntityType="Self.Personalizaciones" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="Restaurante" EntityType="Self.Restaurante" />
+          <EntitySet Name="UnidadMedida" EntityType="Self.UnidadMedida" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Variacion" EntityType="Self.Variacion" />
+          <EntitySet Name="VariacionLista" EntityType="Self.VariacionLista" />
+          <AssociationSet Name="FK_Area_Restaurante" Association="Self.FK_Area_Restaurante">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mesa_Area" Association="Self.FK_Mesa_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categoria__idRes__5441852A" Association="Self.FK__Categoria__idRes__5441852A">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Categoria" EntitySet="Categoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__idCategori__5CD6CB2B" Association="Self.FK__Menu__idCategori__5CD6CB2B">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Categoria" Association="Self.FK_Producto_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Compra_Proveedor" Association="Self.FK_Compra_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompraDetalle_Compra" Association="Self.FK_CompraDetalle_Compra">
+            <End Role="Compra" EntitySet="Compra" />
+            <End Role="CompraDetalle" EntitySet="CompraDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompraDetalle_Producto" Association="Self.FK_CompraDetalle_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="CompraDetalle" EntitySet="CompraDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Egresos__idForma__79FD19BE" Association="Self.FK__Egresos__idForma__79FD19BE">
+            <End Role="FormaPago" EntitySet="FormaPago" />
+            <End Role="Egresos" EntitySet="Egresos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturaAdicional_Factura" Association="Self.FK_FacturaAdicional_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="FacturaAdicional" EntitySet="FacturaAdicional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturaDetalle_Factura" Association="Self.FK_FacturaDetalle_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="FacturaDetalle" EntitySet="FacturaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pago_Factura" Association="Self.FK_Pago_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventario_Producto" Association="Self.FK_Inventario_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Inventario" EntitySet="Inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pago_MedioPago" Association="Self.FK_Pago_MedioPago">
+            <End Role="MedioPago" EntitySet="MedioPago" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoDet__idMen__628FA481" Association="Self.FK__PedidoDet__idMen__628FA481">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plato_Ingrediente" Association="Self.FK_Plato_Ingrediente">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Plato" EntitySet="Plato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Mesa" Association="Self.FK_Pedido_Mesa">
+            <End Role="Mesa" EntitySet="Mesa" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Usuario" Association="Self.FK_Pedido_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoDetalle_Pedido" Association="Self.FK_PedidoDetalle_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoDetalle_Producto" Association="Self.FK_PedidoDetalle_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variacion_PedidoDetalle" Association="Self.FK_Variacion_PedidoDetalle">
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+            <End Role="Variacion" EntitySet="Variacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plato_Producto" Association="Self.FK_Plato_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Plato" EntitySet="Plato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__idRest__6754599E" Association="Self.FK__Producto__idRest__6754599E">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_UnidadMedida" Association="Self.FK_Producto_UnidadMedida">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UnidadMed__idRes__07C12930" Association="Self.FK__UnidadMed__idRes__07C12930">
+            <End Role="Restaurante" EntitySet="Restaurante" />
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variacion_VariacionLista" Association="Self.FK_Variacion_VariacionLista">
+            <End Role="VariacionLista" EntitySet="VariacionLista" />
+            <End Role="Variacion" EntitySet="Variacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestauranteModelStoreContainer" CdmEntityContainer="RestauranteEntities">
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="RestauranteModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="area1" ColumnName="area" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CajaApertura">
+            <EntityTypeMapping TypeName="RestauranteModel.CajaApertura">
+              <MappingFragment StoreEntitySet="CajaApertura">
+                <ScalarProperty Name="idCajaApertura" ColumnName="idCajaApertura" />
+                <ScalarProperty Name="fehcaApertura" ColumnName="fehcaApertura" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CajaCierre">
+            <EntityTypeMapping TypeName="RestauranteModel.CajaCierre">
+              <MappingFragment StoreEntitySet="CajaCierre">
+                <ScalarProperty Name="idCajaCierre" ColumnName="idCajaCierre" />
+                <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
+                <ScalarProperty Name="valorTotal" ColumnName="valorTotal" />
+                <ScalarProperty Name="idMedioPago" ColumnName="idMedioPago" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CajaMenor">
+            <EntityTypeMapping TypeName="RestauranteModel.CajaMenor">
+              <MappingFragment StoreEntitySet="CajaMenor">
+                <ScalarProperty Name="idCajaMenor" ColumnName="idCajaMenor" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="tipoMov" ColumnName="tipoMov" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="persona" ColumnName="persona" />
+                <ScalarProperty Name="concepto" ColumnName="concepto" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="RestauranteModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="idCategoriaProducto" ColumnName="idCategoriaProducto" />
+                <ScalarProperty Name="categoriaProducto" ColumnName="categoriaProducto" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="RestauranteModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="cliente1" ColumnName="cliente" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="nota" ColumnName="nota" />
+                <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compra">
+            <EntityTypeMapping TypeName="RestauranteModel.Compra">
+              <MappingFragment StoreEntitySet="Compra">
+                <ScalarProperty Name="idCompra" ColumnName="idCompra" />
+                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+                <ScalarProperty Name="idFormaPago" ColumnName="idFormaPago" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fechaPago" ColumnName="fechaPago" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompraDetalle">
+            <EntityTypeMapping TypeName="RestauranteModel.CompraDetalle">
+              <MappingFragment StoreEntitySet="CompraDetalle">
+                <ScalarProperty Name="idCompraDetalle" ColumnName="idCompraDetalle" />
+                <ScalarProperty Name="idCompra" ColumnName="idCompra" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="precioUnit" ColumnName="precioUnit" />
+                <ScalarProperty Name="cant" ColumnName="cant" />
+                <ScalarProperty Name="precioTot" ColumnName="precioTot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Egresos">
+            <EntityTypeMapping TypeName="RestauranteModel.Egresos">
+              <MappingFragment StoreEntitySet="Egresos">
+                <ScalarProperty Name="idEgreso" ColumnName="idEgreso" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="remitente" ColumnName="remitente" />
+                <ScalarProperty Name="telefonoRemitente" ColumnName="telefonoRemitente" />
+                <ScalarProperty Name="cedulaRemitente" ColumnName="cedulaRemitente" />
+                <ScalarProperty Name="concepto" ColumnName="concepto" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="idFormaPago" ColumnName="idFormaPago" />
+                <ScalarProperty Name="fechaEgreso" ColumnName="fechaEgreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="RestauranteModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="Estado1" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="RestauranteModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="propina" ColumnName="propina" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="impuesto" ColumnName="impuesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacturaAdicional">
+            <EntityTypeMapping TypeName="RestauranteModel.FacturaAdicional">
+              <MappingFragment StoreEntitySet="FacturaAdicional">
+                <ScalarProperty Name="idFacAdicional" ColumnName="idFacAdicional" />
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="idIngrediente" ColumnName="idIngrediente" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cant" ColumnName="cant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacturaDetalle">
+            <EntityTypeMapping TypeName="RestauranteModel.FacturaDetalle">
+              <MappingFragment StoreEntitySet="FacturaDetalle">
+                <ScalarProperty Name="idDetralleFac" ColumnName="idDetralleFac" />
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="idPorducto" ColumnName="idPorducto" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="cant" ColumnName="cant" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormaPago">
+            <EntityTypeMapping TypeName="RestauranteModel.FormaPago">
+              <MappingFragment StoreEntitySet="FormaPago">
+                <ScalarProperty Name="idFormaPago" ColumnName="idFormaPago" />
+                <ScalarProperty Name="FormaPago1" ColumnName="FormaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gastos">
+            <EntityTypeMapping TypeName="RestauranteModel.Gastos">
+              <MappingFragment StoreEntitySet="Gastos">
+                <ScalarProperty Name="idGasto" ColumnName="idGasto" />
+                <ScalarProperty Name="idEmpresa" ColumnName="idEmpresa" />
+                <ScalarProperty Name="fechaGastos" ColumnName="fechaGastos" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="remitente" ColumnName="remitente" />
+                <ScalarProperty Name="nombrePersonaRemitente" ColumnName="nombrePersonaRemitente" />
+                <ScalarProperty Name="cedulaPersonaRemitente" ColumnName="cedulaPersonaRemitente" />
+                <ScalarProperty Name="valorGasto" ColumnName="valorGasto" />
+                <ScalarProperty Name="descripcionGasto" ColumnName="descripcionGasto" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventario">
+            <EntityTypeMapping TypeName="RestauranteModel.Inventario">
+              <MappingFragment StoreEntitySet="Inventario">
+                <ScalarProperty Name="idInventario" ColumnName="idInventario" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="movimiento" ColumnName="movimiento" />
+                <ScalarProperty Name="cant" ColumnName="cant" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedioPago">
+            <EntityTypeMapping TypeName="RestauranteModel.MedioPago">
+              <MappingFragment StoreEntitySet="MedioPago">
+                <ScalarProperty Name="idMedioPago" ColumnName="idMedioPago" />
+                <ScalarProperty Name="medioPago1" ColumnName="medioPago" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="RestauranteModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesa">
+            <EntityTypeMapping TypeName="RestauranteModel.Mesa">
+              <MappingFragment StoreEntitySet="Mesa">
+                <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+                <ScalarProperty Name="mesa1" ColumnName="mesa" />
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pago">
+            <EntityTypeMapping TypeName="RestauranteModel.Pago">
+              <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="idPago" ColumnName="idPago" />
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="idMedioPago" ColumnName="idMedioPago" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parametros">
+            <EntityTypeMapping TypeName="RestauranteModel.Parametros">
+              <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="idParametro" ColumnName="idParametro" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="RestauranteModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="pedido1" ColumnName="pedido" />
+                <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoDetalle">
+            <EntityTypeMapping TypeName="RestauranteModel.PedidoDetalle">
+              <MappingFragment StoreEntitySet="PedidoDetalle">
+                <ScalarProperty Name="idPedidoDetalle" ColumnName="idPedidoDetalle" />
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidosTemporales">
+            <EntityTypeMapping TypeName="RestauranteModel.PedidosTemporales">
+              <MappingFragment StoreEntitySet="PedidosTemporales">
+                <ScalarProperty Name="idPedidoTemporal" ColumnName="idPedidoTemporal" />
+                <ScalarProperty Name="producto" ColumnName="producto" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="personalizacion" ColumnName="personalizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil">
+            <EntityTypeMapping TypeName="RestauranteModel.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="nombre_perfil" ColumnName="nombre_perfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personalizaciones">
+            <EntityTypeMapping TypeName="RestauranteModel.Personalizaciones">
+              <MappingFragment StoreEntitySet="Personalizaciones">
+                <ScalarProperty Name="idPersonalizacion" ColumnName="idPersonalizacion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plato">
+            <EntityTypeMapping TypeName="RestauranteModel.Plato">
+              <MappingFragment StoreEntitySet="Plato">
+                <ScalarProperty Name="idPlato" ColumnName="idPlato" />
+                <ScalarProperty Name="idProdcuto" ColumnName="idProdcuto" />
+                <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="RestauranteModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="idProdcuto" ColumnName="idProdcuto" />
+                <ScalarProperty Name="producto1" ColumnName="producto" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="preparadoEn" ColumnName="preparadoEn" />
+                <ScalarProperty Name="stokMinimo" ColumnName="stokMinimo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="RestauranteModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+                <ScalarProperty Name="proveedor1" ColumnName="proveedor" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="notas" ColumnName="notas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurante">
+            <EntityTypeMapping TypeName="RestauranteModel.Restaurante">
+              <MappingFragment StoreEntitySet="Restaurante">
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+                <ScalarProperty Name="restaurante1" ColumnName="restaurante" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadMedida">
+            <EntityTypeMapping TypeName="RestauranteModel.UnidadMedida">
+              <MappingFragment StoreEntitySet="UnidadMedida">
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="unidadMedida1" ColumnName="unidadMedida" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="RestauranteModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+                <ScalarProperty Name="esadmin" ColumnName="esadmin" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Variacion">
+            <EntityTypeMapping TypeName="RestauranteModel.Variacion">
+              <MappingFragment StoreEntitySet="Variacion">
+                <ScalarProperty Name="idVariacion" ColumnName="idVariacion" />
+                <ScalarProperty Name="idPedidoDetalle" ColumnName="idPedidoDetalle" />
+                <ScalarProperty Name="idVariacionLista" ColumnName="idVariacionLista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariacionLista">
+            <EntityTypeMapping TypeName="RestauranteModel.VariacionLista">
+              <MappingFragment StoreEntitySet="VariacionLista">
+                <ScalarProperty Name="idVariacionLista" ColumnName="idVariacionLista" />
+                <ScalarProperty Name="variacion" ColumnName="variacion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="idRestaurante" ColumnName="idRestaurante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
